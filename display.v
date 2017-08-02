@@ -450,8 +450,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 					end
 				end
-				
-				if(!up && !activeflag) begin
+				else if(!up && !activeflag) begin
 					if(board[0] == 8'd0 && board[1] == 8'd0 && board[2] == 8'd0 && board[3] == 8'd0) begin
 						{board[0], board[1], board[2], board[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
