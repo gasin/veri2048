@@ -5,6 +5,9 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 	output red, green, blue;
 	reg red, green, blue;
 	reg activeflag;
+	reg appearflag;
+	reg endflag;
+	reg [31:0] clockcounter;
 	reg [7:0] board [0:15];
 	reg [3:0] cell_index;
 	reg [31:0] cell_position_row [0:15];
@@ -62,30 +65,1380 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				else if(col >= CELL_SIZE*5-BORDER_WIDTH && col <= CELL_SIZE*5+BORDER_WIDTH) {red, green, blue} <= 3'b000;
 				else if(col >= CELL_SIZE*6-BORDER_WIDTH && col <= CELL_SIZE*6+BORDER_WIDTH) {red, green, blue} <= 3'b000;
 				else if(board[cell_index] == 8'd0) {red, green, blue} <= 3'b111;
-				else if(board[cell_index] == 8'd1) {red, green, blue} <= 3'b100;
-				else if(board[cell_index] == 8'd2) {red, green, blue} <= 3'b010;
-				else if(board[cell_index] == 8'd3) {red, green, blue} <= 3'b001;
-				else if(board[cell_index] == 8'd4) {red, green, blue} <= 3'b110;
-				else if(board[cell_index] == 8'd5) {red, green, blue} <= 3'b101;
-				else if(board[cell_index] == 8'd6) {red, green, blue} <= 3'b011;
+				else if(board[cell_index] == 8'd1) begin
+					if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else {red, green, blue} <= 3'b100;
+				end
+				else if(board[cell_index] == 8'd2) begin
+					if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else {red, green, blue} <= 3'b010;
+				end
+				else if(board[cell_index] == 8'd3) begin
+					if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else {red, green, blue} <= 3'b001;
+				end
+				else if(board[cell_index] == 8'd4) begin
+					if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+9*6 && col < cell_position_col[cell_index]+10+(9+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+9*6 && col < cell_position_col[cell_index]+10+(9+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+9*6 && col < cell_position_col[cell_index]+10+(9+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else {red, green, blue} <= 3'b110;
+				end
+				else if(board[cell_index] == 8'd5) begin
+					if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+9*6 && col < cell_position_col[cell_index]+10+(9+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else {red, green, blue} <= 3'b101;
+				end
+				else if(board[cell_index] == 8'd6) begin
+					if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+0*6 && col < cell_position_col[cell_index]+10+(0+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+1*6 && col < cell_position_col[cell_index]+10+(1+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+2*6 && col < cell_position_col[cell_index]+10+(2+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+3*6 && col < cell_position_col[cell_index]+10+(3+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+4*6 && col < cell_position_col[cell_index]+10+(4+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+5*6 && col < cell_position_col[cell_index]+10+(5+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+6*6 && col < cell_position_col[cell_index]+10+(6+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+7*6 && col < cell_position_col[cell_index]+10+(7+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +1*6 && row < cell_position_row[cell_index]+10+(1+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +2*6 && row < cell_position_row[cell_index]+10+(2+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +3*6 && row < cell_position_row[cell_index]+10+(3+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +5*6 && row < cell_position_row[cell_index]+10+(5+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +6*6 && row < cell_position_row[cell_index]+10+(6+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +7*6 && row < cell_position_row[cell_index]+10+(7+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +8*6 && row < cell_position_row[cell_index]+10+(8+1)*6 && col >= cell_position_col[cell_index]+10+8*6 && col < cell_position_col[cell_index]+10+(8+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 10 +4*6 && row < cell_position_row[cell_index]+10+(4+1)*6 && col >= cell_position_col[cell_index]+10+9*6 && col < cell_position_col[cell_index]+10+(9+1)*6) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else {red, green, blue} <= 3'b011;
+				end
 				else if(board[cell_index] == 8'd7) begin
-					if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b100;
+					if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b100;
 					else {red, green, blue} <= 3'b010;
 				end
 				else if(board[cell_index] == 8'd8) begin
-					if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b010;
+					if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +9*3 && row < cell_position_row[cell_index]+25+(9+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b010;
 					else {red, green, blue} <= 3'b001;
 				end
 				else if(board[cell_index] == 8'd9) begin
-					if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b001;
+					if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+4*3 && col < cell_position_col[cell_index]+8+0+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+4*3 && col < cell_position_col[cell_index]+8+0+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+4*3 && col < cell_position_col[cell_index]+8+0+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+4*3 && col < cell_position_col[cell_index]+8+0+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+4*3 && col < cell_position_col[cell_index]+8+0+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+4*3 && col < cell_position_col[cell_index]+8+0+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b001;
 					else {red, green, blue} <= 3'b100;
 				end
 				else if(board[cell_index] == 8'd10) begin
-					if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b110;
+					if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+5*3 && col < cell_position_col[cell_index]+8+0+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+0*3 && col < cell_position_col[cell_index]+8+32+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+0*3 && col < cell_position_col[cell_index]+8+32+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+0*3 && col < cell_position_col[cell_index]+8+32+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+0*3 && col < cell_position_col[cell_index]+8+32+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+0*3 && col < cell_position_col[cell_index]+8+32+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+1*3 && col < cell_position_col[cell_index]+8+32+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+1*3 && col < cell_position_col[cell_index]+8+32+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+1*3 && col < cell_position_col[cell_index]+8+32+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+1*3 && col < cell_position_col[cell_index]+8+32+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+5*3 && col < cell_position_col[cell_index]+8+32+(5+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+9*3 && col < cell_position_col[cell_index]+8+32+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b110;
 					else {red, green, blue} <= 3'b101;
 				end
 				else if(board[cell_index] == 8'd11) begin
-					if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b101;
+					if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+0*3 && col < cell_position_col[cell_index]+8+0+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+1*3 && col < cell_position_col[cell_index]+8+0+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+2*3 && col < cell_position_col[cell_index]+8+0+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+3*3 && col < cell_position_col[cell_index]+8+0+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+6*3 && col < cell_position_col[cell_index]+8+0+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+7*3 && col < cell_position_col[cell_index]+8+0+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+8*3 && col < cell_position_col[cell_index]+8+0+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+0+9*3 && col < cell_position_col[cell_index]+8+0+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+0*3 && col < cell_position_col[cell_index]+8+32+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+0*3 && col < cell_position_col[cell_index]+8+32+(0+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+1*3 && col < cell_position_col[cell_index]+8+32+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+1*3 && col < cell_position_col[cell_index]+8+32+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+1*3 && col < cell_position_col[cell_index]+8+32+(1+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+2*3 && col < cell_position_col[cell_index]+8+32+(2+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+3*3 && col < cell_position_col[cell_index]+8+32+(3+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+4*3 && col < cell_position_col[cell_index]+8+32+(4+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+6*3 && col < cell_position_col[cell_index]+8+32+(6+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+7*3 && col < cell_position_col[cell_index]+8+32+(7+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +1*3 && row < cell_position_row[cell_index]+25+(1+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +4*3 && row < cell_position_row[cell_index]+25+(4+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +8*3 && row < cell_position_row[cell_index]+25+(8+1)*3 && col >= cell_position_col[cell_index]+8+32+8*3 && col < cell_position_col[cell_index]+8+32+(8+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +2*3 && row < cell_position_row[cell_index]+25+(2+1)*3 && col >= cell_position_col[cell_index]+8+32+9*3 && col < cell_position_col[cell_index]+8+32+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +3*3 && row < cell_position_row[cell_index]+25+(3+1)*3 && col >= cell_position_col[cell_index]+8+32+9*3 && col < cell_position_col[cell_index]+8+32+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +5*3 && row < cell_position_row[cell_index]+25+(5+1)*3 && col >= cell_position_col[cell_index]+8+32+9*3 && col < cell_position_col[cell_index]+8+32+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +6*3 && row < cell_position_row[cell_index]+25+(6+1)*3 && col >= cell_position_col[cell_index]+8+32+9*3 && col < cell_position_col[cell_index]+8+32+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(row >= cell_position_row[cell_index] + 25 +7*3 && row < cell_position_row[cell_index]+25+(7+1)*3 && col >= cell_position_col[cell_index]+8+32+9*3 && col < cell_position_col[cell_index]+8+32+(9+1)*3) begin
+						{red, green, blue} <= 3'b000;
+					end
+					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b101;
 					else {red, green, blue} <= 3'b011;
 				end
 				else {red, green, blue} <= 3'b111;
@@ -116,6 +1469,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				if(col-600 > row-530) {red, green, blue} <= 3'b101;
 				else {red, green, blue} <= 3'b011;
 			end
+			else if(endflag) {red, green, blue} <= 3'b100;
 			else {red, green, blue} <= 3'b111;
 		end
 	end
@@ -153,14 +1507,18 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 	
 	always @(posedge CLK or negedge RST) begin
 		if(!RST) begin
-			{board[0], board[4], board[8], board[12]} <= {8'd1, 8'd1, 8'd2, 8'd3};
-			{board[1], board[5], board[9], board[13]} <= {8'd1, 8'd1, 8'd2, 8'd3};
-			{board[2], board[6], board[10], board[14]} <= {8'd2, 8'd2, 8'd3, 8'd4};
-			{board[3], board[7], board[11], board[15]} <= {8'd3, 8'd3, 8'd4, 8'd5};
+			{board[0], board[4], board[8], board[12]} <= {8'd0, 8'd2, 8'd0, 8'd0};
+			{board[1], board[5], board[9], board[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+			{board[2], board[6], board[10], board[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+			{board[3], board[7], board[11], board[15]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 			activeflag <= 1'b0;
+			appearflag <= 1'b0;
+			endflag <= 1'b0;
+			clockcounter <= 32'd0;
 		end
-		else begin
-			if(up && down && left && right) begin
+		else if(!endflag) begin
+			clockcounter <= clockcounter + 32'd1;
+			if(!appearflag && up && down && left && right) begin
 				activeflag <= 1'b0;
 			end
 			else begin
@@ -450,8 +1808,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 					end
 				end
-				
-				if(!up && !activeflag) begin
+				else if(!up && !activeflag) begin
 					if(board[0] == 8'd0 && board[1] == 8'd0 && board[2] == 8'd0 && board[3] == 8'd0) begin
 						{board[0], board[1], board[2], board[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
@@ -1305,6 +2662,33 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 							else {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[7], board[3]};
 						end
 					end
+				end
+				if((!up || !down || !left || !right) && !activeflag) begin
+					if(board[0]>0&&board[1]>0&&board[2]>0&&board[3]>0&&board[4]>0&&board[5]>0&&board[6]>0&&board[7]>0) begin
+					if(board[8]>0&&board[9]>0&&board[10]>0&&board[11]>0&&board[12]>0&&board[13]>0&&board[14]>0&&board[15]>0) begin
+					if(board[0]!=board[1]&&board[1]!=board[2]&&board[2]!=board[3]) begin
+					if(board[4]!=board[5]&&board[5]!=board[6]&&board[6]!=board[7]) begin
+					if(board[8]!=board[9]&&board[9]!=board[10]&&board[10]!=board[11]) begin
+					if(board[12]!=board[13]&&board[13]!=board[14]&&board[14]!=board[15]) begin
+					if(board[0]!=board[4]&&board[4]!=board[8]&&board[8]!=board[12]) begin
+					if(board[1]!=board[5]&&board[5]!=board[9]&&board[9]!=board[13]) begin
+					if(board[2]!=board[6]&&board[6]!=board[10]&&board[10]!=board[14]) begin
+					if(board[3]!=board[7]&&board[7]!=board[11]&&board[11]!=board[15]) begin
+						endflag <= 1'b1;
+					end end end end end end end end end end
+					if(board[0]==8'd11||board[1]==8'd11||board[2]==8'd11||board[3]==8'd11) begin
+					if(board[4]==8'd11||board[5]==8'd11||board[9]==8'd11||board[7]==8'd11) begin
+					if(board[8]==8'd11||board[9]==8'd11||board[10]==8'd11||board[11]==8'd11) begin
+					if(board[13]==8'd11||board[13]==8'd11||board[14]==8'd11||board[15]==8'd11) begin
+						endflag <= 1'b1;
+					end end end end 
+					appearflag <= 1'b1;
+				end
+			end
+			if(appearflag) begin
+				if(board[clockcounter[12:9]] == 8'd0) begin
+					appearflag <= 1'b0;
+					board[clockcounter[12:9]] <= (clockcounter[13:11] > 0)?8'd1:8'd2;
 				end
 			end
 		end

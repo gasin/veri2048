@@ -3,23 +3,22 @@ module divider(clk, rst, clkout);
 	input clk, rst;
 	output clkout;
 	
-	reg [15:0] counter;
+	reg [7:0] counter;
 	
 	always @(posedge clk or negedge rst) begin
-		if(!rst) counter <= 16'b0;
-		else counter <= counter + 16'b1;
+		if(!rst) counter <= 8'b0;
+		else counter <= counter + 8'b1;
 	end
 	
-	assign clkout = counter[15];
+	assign clkout = counter[7];
 endmodule
 
-module chattering_remover(clk, rst, key_in, key_out);
+module chattering_remover(clk, rst, keyin, keyout);
 	input clk, rst;
-	input [17:0] key_in;
-	output [17:0] key_out;
-	reg [17:0] key_out;
+	input [4:0] keyin;
+	output reg [4:0] keyout;
 	
-	always @(posedge clk_divided) key_out <= key_in;
+	always @(posedge clk_divided) keyout <= keyin;
 	
 	divider div(clk, rst, clk_divided);
 endmodule

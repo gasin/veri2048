@@ -1,0 +1,24 @@
+else if(row >= top_row+1*thick && row < top_row+(1+1)*thick && col >= top_col+5*thick && col < top_col+(5+1)*thick)) begin
+	{red, green, blue} <= 3'b000
+end
+else if(row >= top_row+2*thick && row < top_row+(2+1)*thick && col >= top_col+5*thick && col < top_col+(5+1)*thick)) begin
+	{red, green, blue} <= 3'b000
+end
+else if(row >= top_row+3*thick && row < top_row+(3+1)*thick && col >= top_col+5*thick && col < top_col+(5+1)*thick)) begin
+	{red, green, blue} <= 3'b000
+end
+else if(row >= top_row+4*thick && row < top_row+(4+1)*thick && col >= top_col+5*thick && col < top_col+(5+1)*thick)) begin
+	{red, green, blue} <= 3'b000
+end
+else if(row >= top_row+5*thick && row < top_row+(5+1)*thick && col >= top_col+5*thick && col < top_col+(5+1)*thick)) begin
+	{red, green, blue} <= 3'b000
+end
+else if(row >= top_row+6*thick && row < top_row+(6+1)*thick && col >= top_col+5*thick && col < top_col+(5+1)*thick)) begin
+	{red, green, blue} <= 3'b000
+end
+else if(row >= top_row+7*thick && row < top_row+(7+1)*thick && col >= top_col+5*thick && col < top_col+(5+1)*thick)) begin
+	{red, green, blue} <= 3'b000
+end
+else if(row >= top_row+8*thick && row < top_row+(8+1)*thick && col >= top_col+5*thick && col < top_col+(5+1)*thick)) begin
+	{red, green, blue} <= 3'b000
+end
