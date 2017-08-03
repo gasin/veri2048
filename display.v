@@ -7,12 +7,18 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 	reg activeflag;
 	reg appearflag;
 	reg moveflag;
+    reg moveflag_2;
 	reg endflag;
 	reg [31:0] clockcounter;
 	reg [7:0] board [0:15];
 	reg [3:0] cell_index;
 	reg [31:0] cell_position_row [0:15];
 	reg [31:0] cell_position_col [0:15];
+    reg [31:0] to_left [0:15];
+    reg [31:0] to_right [0:15];
+    reg [31:0] to_up [0:15];
+    reg [31:0] to_down [0:15];
+    reg [31:0] movecounter;
 	parameter CELL_SIZE = 100;
 	parameter BORDER_WIDTH = 10;
 	
@@ -52,6 +58,76 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			cell_position_col[13] <= CELL_SIZE*5+BORDER_WIDTH;
 			cell_position_col[14] <= CELL_SIZE*5+BORDER_WIDTH;
 			cell_position_col[15] <= CELL_SIZE*5+BORDER_WIDTH;
+            
+            movecounter <= 32'd0;
+            
+            to_left[0] <= 32'd0;
+            to_left[1] <= 32'd0;
+            to_left[2] <= 32'd0;
+            to_left[3] <= 32'd0;
+            to_left[4] <= 32'd0;
+            to_left[5] <= 32'd0;
+            to_left[6] <= 32'd0;
+            to_left[7] <= 32'd0;
+            to_left[8] <= 32'd0;
+            to_left[9] <= 32'd0;
+            to_left[10] <= 32'd0;
+            to_left[11] <= 32'd0;
+            to_left[12] <= 32'd0;
+            to_left[13] <= 32'd0;
+            to_left[14] <= 32'd0;
+            to_left[15] <= 32'd0;
+            
+            to_right[0] <= 32'd0;
+            to_right[1] <= 32'd0;
+            to_right[2] <= 32'd0;
+            to_right[3] <= 32'd0;
+            to_right[4] <= 32'd0;
+            to_right[5] <= 32'd0;
+            to_right[6] <= 32'd0;
+            to_right[7] <= 32'd0;
+            to_right[8] <= 32'd0;
+            to_right[9] <= 32'd0;
+            to_right[10] <= 32'd0;
+            to_right[11] <= 32'd0;
+            to_right[12] <= 32'd0;
+            to_right[13] <= 32'd0;
+            to_right[14] <= 32'd0;
+            to_right[15] <= 32'd0;
+            
+            to_up[0] <= 32'd0;
+            to_up[1] <= 32'd0;
+            to_up[2] <= 32'd0;
+            to_up[3] <= 32'd0;
+            to_up[4] <= 32'd0;
+            to_up[5] <= 32'd0;
+            to_up[6] <= 32'd0;
+            to_up[7] <= 32'd0;
+            to_up[8] <= 32'd0;
+            to_up[9] <= 32'd0;
+            to_up[10] <= 32'd0;
+            to_up[11] <= 32'd0;
+            to_up[12] <= 32'd0;
+            to_up[13] <= 32'd0;
+            to_up[14] <= 32'd0;
+            to_up[15] <= 32'd0;
+            
+            to_down[0] <= 32'd0;
+            to_down[1] <= 32'd0;
+            to_down[2] <= 32'd0;
+            to_down[3] <= 32'd0;
+            to_down[4] <= 32'd0;
+            to_down[5] <= 32'd0;
+            to_down[6] <= 32'd0;
+            to_down[7] <= 32'd0;
+            to_down[8] <= 32'd0;
+            to_down[9] <= 32'd0;
+            to_down[10] <= 32'd0;
+            to_down[11] <= 32'd0;
+            to_down[12] <= 32'd0;
+            to_down[13] <= 32'd0;
+            to_down[14] <= 32'd0;
+            to_down[15] <= 32'd0;
 		end
 		else begin
 			if(col >= CELL_SIZE*2-BORDER_WIDTH && col <= CELL_SIZE*6+BORDER_WIDTH && row >= CELL_SIZE-BORDER_WIDTH && row <= CELL_SIZE*5+BORDER_WIDTH) begin
@@ -1519,14 +1595,17 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			activeflag <= 1'b0;
 			appearflag <= 1'b0;
 			moveflag <= 1'b0;
+            moveflag_2 <= 1'b0;
 			endflag <= 1'b0;
 			clockcounter <= 32'd0;
 		end
 		else if(!endflag) begin
-			{origin[0], origin[1], origin[2], origin[3]} <= {board[0], board[1], board[2], board[3]};
-			{origin[4], origin[5], origin[6], origin[7]} <= {board[4], board[5], board[6], board[7]};
-			{origin[8], origin[9], origin[10], origin[11]} <= {board[8], board[9], board[10], board[11]};
-			{origin[12], origin[13], origin[14], origin[15]} <= {board[12], board[13], board[14], board[15]};
+            if(!moveflag_2) begin
+                {origin[0], origin[1], origin[2], origin[3]} <= {board[0], board[1], board[2], board[3]};
+                {origin[4], origin[5], origin[6], origin[7]} <= {board[4], board[5], board[6], board[7]};
+                {origin[8], origin[9], origin[10], origin[11]} <= {board[8], board[9], board[10], board[11]};
+                {origin[12], origin[13], origin[14], origin[15]} <= {board[12], board[13], board[14], board[15]};
+            end
 			
 			clockcounter <= clockcounter + 32'd1;
 			
@@ -1549,7 +1628,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				endflag <= 1'b1;
 			end end end end 
 			
-			if(!moveflag && !appearflag && up && down && left && right) begin
+			if(!moveflag_2 && !moveflag && !appearflag && up && down && left && right) begin
 				activeflag <= 1'b0;
 			end
 			else begin
@@ -2699,10 +2778,10 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				end
 			end
 			if(moveflag) begin
-				if({board[0],board[1],board[2],board[3]} != {origin[0],origin[1],origin[2],origin[3]}) appearflag <= 1'b1;
-				else if({board[4],board[5],board[6],board[7]} != {origin[4],origin[5],origin[6],origin[7]}) appearflag <= 1'b1;
-				else if({board[8],board[9],board[10],board[11]} != {origin[8],origin[9],origin[10],origin[11]}) appearflag <= 1'b1;
-				else if({board[12],board[13],board[14],board[15]} != {origin[12],origin[13],origin[14],origin[15]}) appearflag <= 1'b1;
+				if({board[0],board[1],board[2],board[3]} != {origin[0],origin[1],origin[2],origin[3]}) moveflag_2 <= 1'b1;
+				else if({board[4],board[5],board[6],board[7]} != {origin[4],origin[5],origin[6],origin[7]}) moveflag_2 <= 1'b1;
+				else if({board[8],board[9],board[10],board[11]} != {origin[8],origin[9],origin[10],origin[11]}) moveflag_2 <= 1'b1;
+				else if({board[12],board[13],board[14],board[15]} != {origin[12],origin[13],origin[14],origin[15]}) moveflag_2 <= 1'b1;
 				moveflag <= 1'b0;
 			end
 			if(appearflag) begin
