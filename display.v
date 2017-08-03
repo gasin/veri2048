@@ -1555,6 +1555,72 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 		if(!RST) begin
 		end
 		else begin
+			if(col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd0]+moveflag_2*to_right[4'd0]
+            && col <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_left[4'd0]+moveflag_2*to_right[4'd0]
+            && row >= CELL_SIZE*1-BORDER_WIDTH-moveflag_2*to_up[4'd0]+moveflag_2*to_down[4'd0]
+            && row <= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd0]+moveflag_2*to_down[4'd0]) cell_index <= 4'd0;
+			else if(col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd1]+moveflag_2*to_right[4'd1]
+            && col <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_left[4'd1]+moveflag_2*to_right[4'd1]
+            && row >= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd1]+moveflag_2*to_down[4'd1]
+            && row <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd1]+moveflag_2*to_down[4'd1]) cell_index <= 4'd1;
+			else if(col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd2]+moveflag_2*to_right[4'd2]
+            && col <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_left[4'd2]+moveflag_2*to_right[4'd2]
+            && row >= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd2]+moveflag_2*to_down[4'd2]
+            && row <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd2]+moveflag_2*to_down[4'd2]) cell_index <= 4'd2;
+			else if(col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd3]+moveflag_2*to_right[4'd3]
+            && col <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_left[4'd3]+moveflag_2*to_right[4'd3]
+            && row >= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd3]+moveflag_2*to_down[4'd3]
+            && row >= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd3]+moveflag_2*to_down[4'd3]) cell_index <= 4'd3;
+			else if(col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd4]+moveflag_2*to_right[4'd4]
+            && col <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_left[4'd4]+moveflag_2*to_right[4'd4]
+            && row >= CELL_SIZE*1-BORDER_WIDTH-moveflag_2*to_up[4'd4]+moveflag_2*to_down[4'd4]
+            && row <= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd4]+moveflag_2*to_down[4'd4]) cell_index <= 4'd4;
+			else if(col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd5]+moveflag_2*to_right[4'd5]
+            && col <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_left[4'd5]+moveflag_2*to_right[4'd5]
+            && row >= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd5]+moveflag_2*to_down[4'd5]
+            && row <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd5]+moveflag_2*to_down[4'd5]) cell_index <= 4'd5;
+			else if(col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd6]+moveflag_2*to_right[4'd6]
+            && col <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_left[4'd6]+moveflag_2*to_right[4'd6]
+            && row >= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd6]+moveflag_2*to_down[4'd6]
+            && row <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd6]+moveflag_2*to_down[4'd6]) cell_index <= 4'd6;
+			else if(col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd7]+moveflag_2*to_right[4'd7]
+            && col <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_left[4'd7]+moveflag_2*to_right[4'd7]
+            && row >= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd7]+moveflag_2*to_down[4'd7]
+            && row >= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd7]+moveflag_2*to_down[4'd7]) cell_index <= 4'd7;
+			else if(col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd8]+moveflag_2*to_right[4'd8]
+            && col <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_left[4'd8]+moveflag_2*to_right[4'd8]
+            && row >= CELL_SIZE*1-BORDER_WIDTH-moveflag_2*to_up[4'd8]+moveflag_2*to_down[4'd8]
+            && row <= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd8]+moveflag_2*to_down[4'd8]) cell_index <= 4'd8;
+			else if(col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd9]+moveflag_2*to_right[4'd9]
+            && col <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_left[4'd9]+moveflag_2*to_right[4'd9]
+            && row >= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd9]+moveflag_2*to_down[4'd9]
+            && row <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd9]+moveflag_2*to_down[4'd9]) cell_index <= 4'd9;
+			else if(col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd10]+moveflag_2*to_right[4'd10]
+            && col <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_left[4'd10]+moveflag_2*to_right[4'd10]
+            && row >= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd10]+moveflag_2*to_down[4'd10]
+            && row <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd10]+moveflag_2*to_down[4'd10]) cell_index <= 4'd10;
+			else if(col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd11]+moveflag_2*to_right[4'd11]
+            && col <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_left[4'd11]+moveflag_2*to_right[4'd11]
+            && row >= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd11]+moveflag_2*to_down[4'd11]
+            && row >= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd11]+moveflag_2*to_down[4'd11]) cell_index <= 4'd11;
+			else if(col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd12]+moveflag_2*to_right[4'd12]
+            && col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd12]+moveflag_2*to_right[4'd12]
+            && row >= CELL_SIZE*1-BORDER_WIDTH-moveflag_2*to_up[4'd12]+moveflag_2*to_down[4'd12]
+            && row <= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd12]+moveflag_2*to_down[4'd12]) cell_index <= 4'd12;
+			else if(col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd13]+moveflag_2*to_right[4'd13]
+            && col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd13]+moveflag_2*to_right[4'd13]
+            && row >= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd13]+moveflag_2*to_down[4'd13]
+            && row <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd13]+moveflag_2*to_down[4'd13]) cell_index <= 4'd13;
+			else if(col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd14]+moveflag_2*to_right[4'd14]
+            && col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd14]+moveflag_2*to_right[4'd14]
+            && row >= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd14]+moveflag_2*to_down[4'd14]
+            && row <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd14]+moveflag_2*to_down[4'd14]) cell_index <= 4'd14;
+			else if(col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd15]+moveflag_2*to_right[4'd15]
+            && col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd15]+moveflag_2*to_right[4'd15]
+            && row >= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd15]+moveflag_2*to_down[4'd15]
+            && row >= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd15]+moveflag_2*to_down[4'd15]) cell_index <= 4'd15;
+            
+            /*
 			if(col >= CELL_SIZE*2+BORDER_WIDTH && col <= CELL_SIZE*3-BORDER_WIDTH) begin
 				if(row >= CELL_SIZE+BORDER_WIDTH && row <= CELL_SIZE*2-BORDER_WIDTH) cell_index <= 4'd0;
 				else if(row >= CELL_SIZE*2+BORDER_WIDTH && row <= CELL_SIZE*3-BORDER_WIDTH) cell_index <= 4'd1;
@@ -1579,6 +1645,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				else if(row >= CELL_SIZE*3+BORDER_WIDTH && row <= CELL_SIZE*4-BORDER_WIDTH) cell_index <= 4'd14;
 				else if(row >= CELL_SIZE*4+BORDER_WIDTH && row <= CELL_SIZE*5-BORDER_WIDTH) cell_index <= 4'd15;
 			end
+            */
 		end
 	end
 	
@@ -1636,1140 +1703,2612 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				if(!left && !activeflag) begin
 					if(board[0] == 8'd0 && board[4] == 8'd0 && board[8] == 8'd0 && board[12] == 8'd0) begin
 						{board[0], board[4], board[8], board[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[0] == 8'd0 && board[4] == 8'd0 && board[8] == 8'd0 && board[12] != 8'd0) begin
 						{board[0], board[4], board[8], board[12]} <= {board[12], 8'd0, 8'd0, 8'd0};
+						{to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[0] == 8'd0 && board[4] == 8'd0 && board[8] != 8'd0 && board[12] == 8'd0) begin
 						{board[0], board[4], board[8], board[12]} <= {board[8], 8'd0, 8'd0, 8'd0};
+						{to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[0] == 8'd0 && board[4] != 8'd0 && board[8] == 8'd0 && board[12] == 8'd0) begin
 						{board[0], board[4], board[8], board[12]} <= {board[4], 8'd0, 8'd0, 8'd0};
+						{to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[0] != 8'd0 && board[4] == 8'd0 && board[8] == 8'd0 && board[12] == 8'd0) begin
 						{board[0], board[4], board[8], board[12]} <= {board[0], 8'd0, 8'd0, 8'd0};
+						{to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[0] == 8'd0 && board[4] == 8'd0 && board[8] != 8'd0 && board[12] != 8'd0) begin
-						if(board[8] != board[12]) {board[0], board[4], board[8], board[12]} <= {board[8], board[12], 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[8] != board[12]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[8], board[12], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[0] == 8'd0 && board[4] != 8'd0 && board[8] == 8'd0 && board[12] != 8'd0) begin
-						if(board[4] != board[12]) {board[0], board[4], board[8], board[12]} <= {board[4], board[12], 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[4] != board[12]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[4], board[12], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[4] == 8'd0 && board[8] == 8'd0 && board[12] != 8'd0) begin
-						if(board[0] != board[12]) {board[0], board[4], board[8], board[12]} <= {board[0], board[12], 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[0] != board[12]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[12], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[0] == 8'd0 && board[4] != 8'd0 && board[8] != 8'd0 && board[12] == 8'd0) begin
-						if(board[4] != board[8]) {board[0], board[4], board[8], board[12]} <= {board[4], board[8], 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[4] != board[8]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[4], board[8], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[4] == 8'd0 && board[8] != 8'd0 && board[12] == 8'd0) begin
-						if(board[0] != board[8]) {board[0], board[4], board[8], board[12]} <= {board[0], board[8], 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[0] != board[8]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[8], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[4] != 8'd0 && board[8] == 8'd0 && board[12] == 8'd0) begin
-						if(board[0] != board[4]) {board[0], board[4], board[8], board[12]} <= {board[0], board[4], 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[0] != board[4]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[4], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[4] != 8'd0 && board[8] != 8'd0 && board[12] == 8'd0) begin
-						if(board[0] == board[4]) {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[8], 8'd0, 8'd0};
-						else if(board[4] == board[8]) {board[0], board[4], board[8], board[12]} <= {board[0], board[4]+8'd1, 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[0], board[4], board[8], 8'd0};
+                        if(board[0] == board[4]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[8], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[4] == board[8]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[4]+8'd1, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[4], board[8], 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[4] != 8'd0 && board[8] == 8'd0 && board[12] != 8'd0) begin
-						if(board[0] == board[4]) {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[12], 8'd0, 8'd0};
-						else if(board[4] == board[12]) {board[0], board[4], board[8], board[12]} <= {board[0], board[4]+8'd1, 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[0], board[4], board[12], 8'd0};
+                        if(board[0] == board[4]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[12], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[4] == board[12]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[4]+8'd1, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[4], board[12], 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[4] == 8'd0 && board[8] != 8'd0 && board[12] != 8'd0) begin
-						if(board[0] == board[8]) {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[12], 8'd0, 8'd0};
-						else if(board[8] == board[12]) {board[0], board[4], board[8], board[12]} <= {board[0], board[8]+8'd1, 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[0], board[8], board[12], 8'd0};
+                        if(board[0] == board[8]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[12], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[8] == board[12]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[8]+8'd1, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[0], board[8], board[12], 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[0] == 8'd0 && board[4] != 8'd0 && board[8] != 8'd0 && board[12] != 8'd0) begin
-						if(board[4] == board[8]) {board[0], board[4], board[8], board[12]} <= {board[4]+8'd1, board[12], 8'd0, 8'd0};
-						else if(board[8] == board[12]) {board[0], board[4], board[8], board[12]} <= {board[4], board[8]+8'd1, 8'd0, 8'd0};
-						else {board[0], board[4], board[8], board[12]} <= {board[4], board[8], board[12], 8'd0};
+                        if(board[4] == board[8]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[4]+8'd1, board[12], 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[8] == board[12]) begin
+                            {board[0], board[4], board[8], board[12]} <= {board[4], board[8]+8'd1, 8'd0, 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[4], board[8], board[12]} <= {board[4], board[8], board[12], 8'd0};
+                            {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[0] == board[4]) begin
-							if(board[8] == board[12]) {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[8]+8'd1, 8'd0, 8'd0};
-							else {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[8], board[12], 8'd0};
+                            if(board[8] == board[12]) begin
+                                {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[8]+8'd1, 8'd0, 8'd0};
+                                {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, board[8], board[12], 8'd0};
+                                {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[4] == board[8]) {board[0], board[4], board[8], board[12]} <= {board[0], board[4]+8'd1, board[12], 8'd0};
-							else if(board[8] == board[12]) {board[0], board[4], board[8], board[12]} <= {board[0], board[4], board[8]+8'd1, 8'd0};
-							else {board[0], board[4], board[8], board[12]} <= {board[0], board[4], board[8], board[12]};
+                            if(board[4] == board[8]) begin
+                                {board[0], board[4], board[8], board[12]} <= {board[0], board[4]+8'd1, board[12], 8'd0};
+                                {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[8] == board[12]) begin
+                                {board[0], board[4], board[8], board[12]} <= {board[0], board[4], board[8]+8'd1, 8'd0};
+                                {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[0], board[4], board[8], board[12]} <= {board[0], board[4], board[8], board[12]};
+                                {to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 					
 					if(board[1] == 8'd0 && board[5] == 8'd0 && board[9] == 8'd0 && board[13] == 8'd0) begin
 						{board[1], board[5], board[9], board[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[1] == 8'd0 && board[5] == 8'd0 && board[9] == 8'd0 && board[13] != 8'd0) begin
 						{board[1], board[5], board[9], board[13]} <= {board[13], 8'd0, 8'd0, 8'd0};
+						{to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[1] == 8'd0 && board[5] == 8'd0 && board[9] != 8'd0 && board[13] == 8'd0) begin
 						{board[1], board[5], board[9], board[13]} <= {board[9], 8'd0, 8'd0, 8'd0};
+						{to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[1] == 8'd0 && board[5] != 8'd0 && board[9] == 8'd0 && board[13] == 8'd0) begin
 						{board[1], board[5], board[9], board[13]} <= {board[5], 8'd0, 8'd0, 8'd0};
+						{to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[1] != 8'd0 && board[5] == 8'd0 && board[9] == 8'd0 && board[13] == 8'd0) begin
 						{board[1], board[5], board[9], board[13]} <= {board[1], 8'd0, 8'd0, 8'd0};
+						{to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[1] == 8'd0 && board[5] == 8'd0 && board[9] != 8'd0 && board[13] != 8'd0) begin
-						if(board[9] != board[13]) {board[1], board[5], board[9], board[13]} <= {board[9], board[13], 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[9] != board[13]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[9], board[13], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[1] == 8'd0 && board[5] != 8'd0 && board[9] == 8'd0 && board[13] != 8'd0) begin
-						if(board[5] != board[13]) {board[1], board[5], board[9], board[13]} <= {board[5], board[13], 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[5] != board[13]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[5], board[13], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[1] != 8'd0 && board[5] == 8'd0 && board[9] == 8'd0 && board[13] != 8'd0) begin
-						if(board[1] != board[13]) {board[1], board[5], board[9], board[13]} <= {board[1], board[13], 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[1] != board[13]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[13], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[1] == 8'd0 && board[5] != 8'd0 && board[9] != 8'd0 && board[13] == 8'd0) begin
-						if(board[5] != board[9]) {board[1], board[5], board[9], board[13]} <= {board[5], board[9], 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[5] != board[9]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[5], board[9], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[1] != 8'd0 && board[5] == 8'd0 && board[9] != 8'd0 && board[13] == 8'd0) begin
-						if(board[1] != board[9]) {board[1], board[5], board[9], board[13]} <= {board[1], board[9], 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[1] != board[9]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[9], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[1] != 8'd0 && board[5] != 8'd0 && board[9] == 8'd0 && board[13] == 8'd0) begin
-						if(board[1] != board[5]) {board[1], board[5], board[9], board[13]} <= {board[1], board[5], 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[1] != board[5]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[5], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[1] != 8'd0 && board[5] != 8'd0 && board[9] != 8'd0 && board[13] == 8'd0) begin
-						if(board[1] == board[5]) {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[9], 8'd0, 8'd0};
-						else if(board[5] == board[9]) {board[1], board[5], board[9], board[13]} <= {board[1], board[5]+8'd1, 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[1], board[5], board[9], 8'd0};
+                        if(board[1] == board[5]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[9], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[5] == board[9]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[5]+8'd1, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[5], board[9], 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[1] != 8'd0 && board[5] != 8'd0 && board[9] == 8'd0 && board[13] != 8'd0) begin
-						if(board[1] == board[5]) {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[13], 8'd0, 8'd0};
-						else if(board[5] == board[13]) {board[1], board[5], board[9], board[13]} <= {board[1], board[5]+8'd1, 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[1], board[5], board[13], 8'd0};
+                        if(board[1] == board[5]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[13], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[5] == board[13]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[5]+8'd1, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[5], board[13], 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[1] != 8'd0 && board[5] == 8'd0 && board[9] != 8'd0 && board[13] != 8'd0) begin
-						if(board[1] == board[9]) {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[13], 8'd0, 8'd0};
-						else if(board[9] == board[13]) {board[1], board[5], board[9], board[13]} <= {board[1], board[9]+8'd1, 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[1], board[9], board[13], 8'd0};
+                        if(board[1] == board[9]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[13], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[9] == board[13]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[9]+8'd1, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[1], board[9], board[13], 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[1] == 8'd0 && board[5] != 8'd0 && board[9] != 8'd0 && board[13] != 8'd0) begin
-						if(board[5] == board[9]) {board[1], board[5], board[9], board[13]} <= {board[5]+8'd1, board[13], 8'd0, 8'd0};
-						else if(board[9] == board[13]) {board[1], board[5], board[9], board[13]} <= {board[5], board[9]+8'd1, 8'd0, 8'd0};
-						else {board[1], board[5], board[9], board[13]} <= {board[5], board[9], board[13], 8'd0};
+                        if(board[5] == board[9]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[5]+8'd1, board[13], 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[9] == board[13]) begin
+                            {board[1], board[5], board[9], board[13]} <= {board[5], board[9]+8'd1, 8'd0, 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[1], board[5], board[9], board[13]} <= {board[5], board[9], board[13], 8'd0};
+                            {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[1] == board[5]) begin
-							if(board[9] == board[13]) {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[9]+8'd1, 8'd0, 8'd0};
-							else {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[9], board[13], 8'd0};
+                            if(board[9] == board[13]) begin
+                                {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[9]+8'd1, 8'd0, 8'd0};
+                                {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, board[9], board[13], 8'd0};
+                                {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[5] == board[9]) {board[1], board[5], board[9], board[13]} <= {board[1], board[5]+8'd1, board[13], 8'd0};
-							else if(board[9] == board[13]) {board[1], board[5], board[9], board[13]} <= {board[1], board[5], board[9]+8'd1, 8'd0};
-							else {board[1], board[5], board[9], board[13]} <= {board[1], board[5], board[9], board[13]};
+                            if(board[5] == board[9]) begin
+                                {board[1], board[5], board[9], board[13]} <= {board[1], board[5]+8'd1, board[13], 8'd0};
+                                {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[9] == board[13]) begin
+                                {board[1], board[5], board[9], board[13]} <= {board[1], board[5], board[9]+8'd1, 8'd0};
+                                {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[1], board[5], board[9], board[13]} <= {board[1], board[5], board[9], board[13]};
+                                {to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
-					
+                    
 					if(board[2] == 8'd0 && board[6] == 8'd0 && board[10] == 8'd0 && board[14] == 8'd0) begin
 						{board[2], board[6], board[10], board[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[2] == 8'd0 && board[6] == 8'd0 && board[10] == 8'd0 && board[14] != 8'd0) begin
 						{board[2], board[6], board[10], board[14]} <= {board[14], 8'd0, 8'd0, 8'd0};
+						{to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[2] == 8'd0 && board[6] == 8'd0 && board[10] != 8'd0 && board[14] == 8'd0) begin
 						{board[2], board[6], board[10], board[14]} <= {board[10], 8'd0, 8'd0, 8'd0};
+						{to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[2] == 8'd0 && board[6] != 8'd0 && board[10] == 8'd0 && board[14] == 8'd0) begin
 						{board[2], board[6], board[10], board[14]} <= {board[6], 8'd0, 8'd0, 8'd0};
+						{to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[2] != 8'd0 && board[6] == 8'd0 && board[10] == 8'd0 && board[14] == 8'd0) begin
 						{board[2], board[6], board[10], board[14]} <= {board[2], 8'd0, 8'd0, 8'd0};
+						{to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[2] == 8'd0 && board[6] == 8'd0 && board[10] != 8'd0 && board[14] != 8'd0) begin
-						if(board[10] != board[14]) {board[2], board[6], board[10], board[14]} <= {board[10], board[14], 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[10] != board[14]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[10], board[14], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[2] == 8'd0 && board[6] != 8'd0 && board[10] == 8'd0 && board[14] != 8'd0) begin
-						if(board[6] != board[14]) {board[2], board[6], board[10], board[14]} <= {board[6], board[14], 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[6] != board[14]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[6], board[14], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[2] != 8'd0 && board[6] == 8'd0 && board[10] == 8'd0 && board[14] != 8'd0) begin
-						if(board[2] != board[14]) {board[2], board[6], board[10], board[14]} <= {board[2], board[14], 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[2] != board[14]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[14], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[2] == 8'd0 && board[6] != 8'd0 && board[10] != 8'd0 && board[14] == 8'd0) begin
-						if(board[6] != board[10]) {board[2], board[6], board[10], board[14]} <= {board[6], board[10], 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[6] != board[10]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[6], board[10], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[2] != 8'd0 && board[6] == 8'd0 && board[10] != 8'd0 && board[14] == 8'd0) begin
-						if(board[2] != board[10]) {board[2], board[6], board[10], board[14]} <= {board[2], board[10], 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[2] != board[10]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[10], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[2] != 8'd0 && board[6] != 8'd0 && board[10] == 8'd0 && board[14] == 8'd0) begin
-						if(board[2] != board[6]) {board[2], board[6], board[10], board[14]} <= {board[2], board[6], 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[2] != board[6]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[6], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[2] != 8'd0 && board[6] != 8'd0 && board[10] != 8'd0 && board[14] == 8'd0) begin
-						if(board[2] == board[6]) {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[10], 8'd0, 8'd0};
-						else if(board[6] == board[10]) {board[2], board[6], board[10], board[14]} <= {board[2], board[6]+8'd1, 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[2], board[6], board[10], 8'd0};
+                        if(board[2] == board[6]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[10], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[6] == board[10]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[6]+8'd1, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[6], board[10], 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[2] != 8'd0 && board[6] != 8'd0 && board[10] == 8'd0 && board[14] != 8'd0) begin
-						if(board[2] == board[6]) {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[14], 8'd0, 8'd0};
-						else if(board[6] == board[14]) {board[2], board[6], board[10], board[14]} <= {board[2], board[6]+8'd1, 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[2], board[6], board[14], 8'd0};
+                        if(board[2] == board[6]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[14], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[6] == board[14]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[6]+8'd1, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[6], board[14], 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[2] != 8'd0 && board[6] == 8'd0 && board[10] != 8'd0 && board[14] != 8'd0) begin
-						if(board[2] == board[10]) {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[14], 8'd0, 8'd0};
-						else if(board[10] == board[14]) {board[2], board[6], board[10], board[14]} <= {board[2], board[10]+8'd1, 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[2], board[10], board[14], 8'd0};
+                        if(board[2] == board[10]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[14], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[10] == board[14]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[10]+8'd1, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[2], board[10], board[14], 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[2] == 8'd0 && board[6] != 8'd0 && board[10] != 8'd0 && board[14] != 8'd0) begin
-						if(board[6] == board[10]) {board[2], board[6], board[10], board[14]} <= {board[6]+8'd1, board[14], 8'd0, 8'd0};
-						else if(board[10] == board[14]) {board[2], board[6], board[10], board[14]} <= {board[6], board[10]+8'd1, 8'd0, 8'd0};
-						else {board[2], board[6], board[10], board[14]} <= {board[6], board[10], board[14], 8'd0};
+                        if(board[6] == board[10]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[6]+8'd1, board[14], 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[10] == board[14]) begin
+                            {board[2], board[6], board[10], board[14]} <= {board[6], board[10]+8'd1, 8'd0, 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[2], board[6], board[10], board[14]} <= {board[6], board[10], board[14], 8'd0};
+                            {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[2] == board[6]) begin
-							if(board[10] == board[14]) {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[10]+8'd1, 8'd0, 8'd0};
-							else {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[10], board[14], 8'd0};
+                            if(board[10] == board[14]) begin
+                                {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[10]+8'd1, 8'd0, 8'd0};
+                                {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, board[10], board[14], 8'd0};
+                                {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[6] == board[10]) {board[2], board[6], board[10], board[14]} <= {board[2], board[6]+8'd1, board[14], 8'd0};
-							else if(board[10] == board[14]) {board[2], board[6], board[10], board[14]} <= {board[2], board[6], board[10]+8'd1, 8'd0};
-							else {board[2], board[6], board[10], board[14]} <= {board[2], board[6], board[10], board[14]};
+                            if(board[6] == board[10]) begin
+                                {board[2], board[6], board[10], board[14]} <= {board[2], board[6]+8'd1, board[14], 8'd0};
+                                {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[10] == board[14]) begin
+                                {board[2], board[6], board[10], board[14]} <= {board[2], board[6], board[10]+8'd1, 8'd0};
+                                {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[2], board[6], board[10], board[14]} <= {board[2], board[6], board[10], board[14]};
+                                {to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
-					
+                    
 					if(board[3] == 8'd0 && board[7] == 8'd0 && board[11] == 8'd0 && board[15] == 8'd0) begin
 						{board[3], board[7], board[11], board[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[3] == 8'd0 && board[7] == 8'd0 && board[11] == 8'd0 && board[15] != 8'd0) begin
 						{board[3], board[7], board[11], board[15]} <= {board[15], 8'd0, 8'd0, 8'd0};
+						{to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[3] == 8'd0 && board[7] == 8'd0 && board[11] != 8'd0 && board[15] == 8'd0) begin
 						{board[3], board[7], board[11], board[15]} <= {board[11], 8'd0, 8'd0, 8'd0};
+						{to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[3] == 8'd0 && board[7] != 8'd0 && board[11] == 8'd0 && board[15] == 8'd0) begin
 						{board[3], board[7], board[11], board[15]} <= {board[7], 8'd0, 8'd0, 8'd0};
+						{to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[3] != 8'd0 && board[7] == 8'd0 && board[11] == 8'd0 && board[15] == 8'd0) begin
 						{board[3], board[7], board[11], board[15]} <= {board[3], 8'd0, 8'd0, 8'd0};
+						{to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[3] == 8'd0 && board[7] == 8'd0 && board[11] != 8'd0 && board[15] != 8'd0) begin
-						if(board[11] != board[15]) {board[3], board[7], board[11], board[15]} <= {board[11], board[15], 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[11] != board[15]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[11], board[15], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[3] == 8'd0 && board[7] != 8'd0 && board[11] == 8'd0 && board[15] != 8'd0) begin
-						if(board[7] != board[15]) {board[3], board[7], board[11], board[15]} <= {board[7], board[15], 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[7] != board[15]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[7], board[15], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[7] == 8'd0 && board[11] == 8'd0 && board[15] != 8'd0) begin
-						if(board[3] != board[15]) {board[3], board[7], board[11], board[15]} <= {board[3], board[15], 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[3] != board[15]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[15], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[3] == 8'd0 && board[7] != 8'd0 && board[11] != 8'd0 && board[15] == 8'd0) begin
-						if(board[7] != board[11]) {board[3], board[7], board[11], board[15]} <= {board[7], board[11], 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[7] != board[11]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[7], board[11], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[7] == 8'd0 && board[11] != 8'd0 && board[15] == 8'd0) begin
-						if(board[3] != board[11]) {board[3], board[7], board[11], board[15]} <= {board[3], board[11], 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[3] != board[11]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[11], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[7] != 8'd0 && board[11] == 8'd0 && board[15] == 8'd0) begin
-						if(board[3] != board[7]) {board[3], board[7], board[11], board[15]} <= {board[3], board[7], 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[3] != board[7]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[7], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[7] != 8'd0 && board[11] != 8'd0 && board[15] == 8'd0) begin
-						if(board[3] == board[7]) {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[11], 8'd0, 8'd0};
-						else if(board[7] == board[11]) {board[3], board[7], board[11], board[15]} <= {board[3], board[7]+8'd1, 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[3], board[7], board[11], 8'd0};
+                        if(board[3] == board[7]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[11], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[7] == board[11]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[7]+8'd1, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[7], board[11], 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[7] != 8'd0 && board[11] == 8'd0 && board[15] != 8'd0) begin
-						if(board[3] == board[7]) {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[15], 8'd0, 8'd0};
-						else if(board[7] == board[15]) {board[3], board[7], board[11], board[15]} <= {board[3], board[7]+8'd1, 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[3], board[7], board[15], 8'd0};
+                        if(board[3] == board[7]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[15], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[7] == board[15]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[7]+8'd1, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[7], board[15], 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[7] == 8'd0 && board[11] != 8'd0 && board[15] != 8'd0) begin
-						if(board[3] == board[11]) {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[15], 8'd0, 8'd0};
-						else if(board[11] == board[15]) {board[3], board[7], board[11], board[15]} <= {board[3], board[11]+8'd1, 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[3], board[11], board[15], 8'd0};
+                        if(board[3] == board[11]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[15], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[11] == board[15]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[11]+8'd1, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[3], board[11], board[15], 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[3] == 8'd0 && board[7] != 8'd0 && board[11] != 8'd0 && board[15] != 8'd0) begin
-						if(board[7] == board[11]) {board[3], board[7], board[11], board[15]} <= {board[7]+8'd1, board[15], 8'd0, 8'd0};
-						else if(board[11] == board[15]) {board[3], board[7], board[11], board[15]} <= {board[7], board[11]+8'd1, 8'd0, 8'd0};
-						else {board[3], board[7], board[11], board[15]} <= {board[7], board[11], board[15], 8'd0};
+                        if(board[7] == board[11]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[7]+8'd1, board[15], 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[11] == board[15]) begin
+                            {board[3], board[7], board[11], board[15]} <= {board[7], board[11]+8'd1, 8'd0, 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[7], board[11], board[15]} <= {board[7], board[11], board[15], 8'd0};
+                            {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[3] == board[7]) begin
-							if(board[11] == board[15]) {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[11]+8'd1, 8'd0, 8'd0};
-							else {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[11], board[15], 8'd0};
+                            if(board[11] == board[15]) begin
+                                {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[11]+8'd1, 8'd0, 8'd0};
+                                {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, board[11], board[15], 8'd0};
+                                {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[7] == board[11]) {board[3], board[7], board[11], board[15]} <= {board[3], board[7]+8'd1, board[15], 8'd0};
-							else if(board[11] == board[15]) {board[3], board[7], board[11], board[15]} <= {board[3], board[7], board[11]+8'd1, 8'd0};
-							else {board[3], board[7], board[11], board[15]} <= {board[3], board[7], board[11], board[15]};
+                            if(board[7] == board[11]) begin
+                                {board[3], board[7], board[11], board[15]} <= {board[3], board[7]+8'd1, board[15], 8'd0};
+                                {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[11] == board[15]) begin
+                                {board[3], board[7], board[11], board[15]} <= {board[3], board[7], board[11]+8'd1, 8'd0};
+                                {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[3], board[7], board[11], board[15]} <= {board[3], board[7], board[11], board[15]};
+                                {to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 				end
 				else if(!up && !activeflag) begin
 					if(board[0] == 8'd0 && board[1] == 8'd0 && board[2] == 8'd0 && board[3] == 8'd0) begin
 						{board[0], board[1], board[2], board[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[0] == 8'd0 && board[1] == 8'd0 && board[2] == 8'd0 && board[3] != 8'd0) begin
 						{board[0], board[1], board[2], board[3]} <= {board[3], 8'd0, 8'd0, 8'd0};
+						{to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[0] == 8'd0 && board[1] == 8'd0 && board[2] != 8'd0 && board[3] == 8'd0) begin
 						{board[0], board[1], board[2], board[3]} <= {board[2], 8'd0, 8'd0, 8'd0};
+						{to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[0] == 8'd0 && board[1] != 8'd0 && board[2] == 8'd0 && board[3] == 8'd0) begin
 						{board[0], board[1], board[2], board[3]} <= {board[1], 8'd0, 8'd0, 8'd0};
+						{to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[0] != 8'd0 && board[1] == 8'd0 && board[2] == 8'd0 && board[3] == 8'd0) begin
 						{board[0], board[1], board[2], board[3]} <= {board[0], 8'd0, 8'd0, 8'd0};
+						{to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[0] == 8'd0 && board[1] == 8'd0 && board[2] != 8'd0 && board[3] != 8'd0) begin
-						if(board[2] != board[3]) {board[0], board[1], board[2], board[3]} <= {board[2], board[3], 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[2] != board[3]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[2], board[3], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[0] == 8'd0 && board[1] != 8'd0 && board[2] == 8'd0 && board[3] != 8'd0) begin
-						if(board[1] != board[3]) {board[0], board[1], board[2], board[3]} <= {board[1], board[3], 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[1] != board[3]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[1], board[3], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[1] == 8'd0 && board[2] == 8'd0 && board[3] != 8'd0) begin
-						if(board[0] != board[3]) {board[0], board[1], board[2], board[3]} <= {board[0], board[3], 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[0] != board[3]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[3], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[0] == 8'd0 && board[1] != 8'd0 && board[2] != 8'd0 && board[3] == 8'd0) begin
-						if(board[1] != board[2]) {board[0], board[1], board[2], board[3]} <= {board[1], board[2], 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[1] != board[2]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[1], board[2], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[1] == 8'd0 && board[2] != 8'd0 && board[3] == 8'd0) begin
-						if(board[0] != board[2]) {board[0], board[1], board[2], board[3]} <= {board[0], board[2], 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[0] != board[2]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[2], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[1] != 8'd0 && board[2] == 8'd0 && board[3] == 8'd0) begin
-						if(board[0] != board[1]) {board[0], board[1], board[2], board[3]} <= {board[0], board[1], 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[0] != board[1]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[1], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[1] != 8'd0 && board[2] != 8'd0 && board[3] == 8'd0) begin
-						if(board[0] == board[1]) {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[2], 8'd0, 8'd0};
-						else if(board[1] == board[2]) {board[0], board[1], board[2], board[3]} <= {board[0], board[1]+8'd1, 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[0], board[1], board[2], 8'd0};
+                        if(board[0] == board[1]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[2], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[1] == board[2]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[1]+8'd1, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[1], board[2], 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[1] != 8'd0 && board[2] == 8'd0 && board[3] != 8'd0) begin
-						if(board[0] == board[1]) {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[3], 8'd0, 8'd0};
-						else if(board[1] == board[3]) {board[0], board[1], board[2], board[3]} <= {board[0], board[1]+8'd1, 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[0], board[1], board[3], 8'd0};
+                        if(board[0] == board[1]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[3], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[1] == board[3]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[1]+8'd1, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[1], board[3], 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[0] != 8'd0 && board[1] == 8'd0 && board[2] != 8'd0 && board[3] != 8'd0) begin
-						if(board[0] == board[2]) {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[3], 8'd0, 8'd0};
-						else if(board[2] == board[3]) {board[0], board[1], board[2], board[3]} <= {board[0], board[2]+8'd1, 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[0], board[2], board[3], 8'd0};
+                        if(board[0] == board[2]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[3], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[2] == board[3]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[2]+8'd1, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[0], board[2], board[3], 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[0] == 8'd0 && board[1] != 8'd0 && board[2] != 8'd0 && board[3] != 8'd0) begin
-						if(board[1] == board[2]) {board[0], board[1], board[2], board[3]} <= {board[1]+8'd1, board[3], 8'd0, 8'd0};
-						else if(board[2] == board[3]) {board[0], board[1], board[2], board[3]} <= {board[1], board[2]+8'd1, 8'd0, 8'd0};
-						else {board[0], board[1], board[2], board[3]} <= {board[1], board[2], board[3], 8'd0};
+                        if(board[1] == board[2]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[1]+8'd1, board[3], 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[2] == board[3]) begin
+                            {board[0], board[1], board[2], board[3]} <= {board[1], board[2]+8'd1, 8'd0, 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[0], board[1], board[2], board[3]} <= {board[1], board[2], board[3], 8'd0};
+                            {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[0] == board[1]) begin
-							if(board[2] == board[3]) {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[2]+8'd1, 8'd0, 8'd0};
-							else {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[2], board[3], 8'd0};
+                            if(board[2] == board[3]) begin
+                                {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[2]+8'd1, 8'd0, 8'd0};
+                                {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, board[2], board[3], 8'd0};
+                                {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[1] == board[2]) {board[0], board[1], board[2], board[3]} <= {board[0], board[1]+8'd1, board[3], 8'd0};
-							else if(board[2] == board[3]) {board[0], board[1], board[2], board[3]} <= {board[0], board[1], board[2]+8'd1, 8'd0};
-							else {board[0], board[1], board[2], board[3]} <= {board[0], board[1], board[2], board[3]};
+                            if(board[1] == board[2]) begin
+                                {board[0], board[1], board[2], board[3]} <= {board[0], board[1]+8'd1, board[3], 8'd0};
+                                {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[2] == board[3]) begin
+                                {board[0], board[1], board[2], board[3]} <= {board[0], board[1], board[2]+8'd1, 8'd0};
+                                {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[0], board[1], board[2], board[3]} <= {board[0], board[1], board[2], board[3]};
+                                {to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 					
 					if(board[4] == 8'd0 && board[5] == 8'd0 && board[6] == 8'd0 && board[7] == 8'd0) begin
 						{board[4], board[5], board[6], board[7]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[4] == 8'd0 && board[5] == 8'd0 && board[6] == 8'd0 && board[7] != 8'd0) begin
 						{board[4], board[5], board[6], board[7]} <= {board[7], 8'd0, 8'd0, 8'd0};
+						{to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[4] == 8'd0 && board[5] == 8'd0 && board[6] != 8'd0 && board[7] == 8'd0) begin
 						{board[4], board[5], board[6], board[7]} <= {board[6], 8'd0, 8'd0, 8'd0};
+						{to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[4] == 8'd0 && board[5] != 8'd0 && board[6] == 8'd0 && board[7] == 8'd0) begin
 						{board[4], board[5], board[6], board[7]} <= {board[5], 8'd0, 8'd0, 8'd0};
+						{to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[4] != 8'd0 && board[5] == 8'd0 && board[6] == 8'd0 && board[7] == 8'd0) begin
 						{board[4], board[5], board[6], board[7]} <= {board[4], 8'd0, 8'd0, 8'd0};
+						{to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[4] == 8'd0 && board[5] == 8'd0 && board[6] != 8'd0 && board[7] != 8'd0) begin
-						if(board[6] != board[7]) {board[4], board[5], board[6], board[7]} <= {board[6], board[7], 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[6] != board[7]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[6], board[7], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[4] == 8'd0 && board[5] != 8'd0 && board[6] == 8'd0 && board[7] != 8'd0) begin
-						if(board[5] != board[7]) {board[4], board[5], board[6], board[7]} <= {board[5], board[7], 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[5] != board[7]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[5], board[7], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[4] != 8'd0 && board[5] == 8'd0 && board[6] == 8'd0 && board[7] != 8'd0) begin
-						if(board[4] != board[7]) {board[4], board[5], board[6], board[7]} <= {board[4], board[7], 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[4] != board[7]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[7], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[4] == 8'd0 && board[5] != 8'd0 && board[6] != 8'd0 && board[7] == 8'd0) begin
-						if(board[5] != board[6]) {board[4], board[5], board[6], board[7]} <= {board[5], board[6], 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[5] != board[6]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[5], board[6], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[4] != 8'd0 && board[5] == 8'd0 && board[6] != 8'd0 && board[7] == 8'd0) begin
-						if(board[4] != board[6]) {board[4], board[5], board[6], board[7]} <= {board[4], board[6], 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[4] != board[6]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[6], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[4] != 8'd0 && board[5] != 8'd0 && board[6] == 8'd0 && board[7] == 8'd0) begin
-						if(board[4] != board[5]) {board[4], board[5], board[6], board[7]} <= {board[4], board[5], 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[4] != board[5]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[5], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[4] != 8'd0 && board[5] != 8'd0 && board[6] != 8'd0 && board[7] == 8'd0) begin
-						if(board[4] == board[5]) {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[6], 8'd0, 8'd0};
-						else if(board[5] == board[6]) {board[4], board[5], board[6], board[7]} <= {board[4], board[5]+8'd1, 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[4], board[5], board[6], 8'd0};
+                        if(board[4] == board[5]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[6], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[5] == board[6]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[5]+8'd1, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[5], board[6], 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[4] != 8'd0 && board[5] != 8'd0 && board[6] == 8'd0 && board[7] != 8'd0) begin
-						if(board[4] == board[5]) {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[7], 8'd0, 8'd0};
-						else if(board[5] == board[7]) {board[4], board[5], board[6], board[7]} <= {board[4], board[5]+8'd1, 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[4], board[5], board[7], 8'd0};
+                        if(board[4] == board[5]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[7], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[5] == board[7]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[5]+8'd1, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[5], board[7], 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[4] != 8'd0 && board[5] == 8'd0 && board[6] != 8'd0 && board[7] != 8'd0) begin
-						if(board[4] == board[6]) {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[7], 8'd0, 8'd0};
-						else if(board[6] == board[7]) {board[4], board[5], board[6], board[7]} <= {board[4], board[6]+8'd1, 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[4], board[6], board[7], 8'd0};
+                        if(board[4] == board[6]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[7], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[6] == board[7]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[6]+8'd1, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[4], board[6], board[7], 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[4] == 8'd0 && board[5] != 8'd0 && board[6] != 8'd0 && board[7] != 8'd0) begin
-						if(board[5] == board[6]) {board[4], board[5], board[6], board[7]} <= {board[5]+8'd1, board[7], 8'd0, 8'd0};
-						else if(board[6] == board[7]) {board[4], board[5], board[6], board[7]} <= {board[5], board[6]+8'd1, 8'd0, 8'd0};
-						else {board[4], board[5], board[6], board[7]} <= {board[5], board[6], board[7], 8'd0};
+                        if(board[5] == board[6]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[5]+8'd1, board[7], 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[6] == board[7]) begin
+                            {board[4], board[5], board[6], board[7]} <= {board[5], board[6]+8'd1, 8'd0, 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[4], board[5], board[6], board[7]} <= {board[5], board[6], board[7], 8'd0};
+                            {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[4] == board[5]) begin
-							if(board[6] == board[7]) {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[6]+8'd1, 8'd0, 8'd0};
-							else {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[6], board[7], 8'd0};
+                            if(board[6] == board[7]) begin
+                                {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[6]+8'd1, 8'd0, 8'd0};
+                                {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, board[6], board[7], 8'd0};
+                                {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[5] == board[6]) {board[4], board[5], board[6], board[7]} <= {board[4], board[5]+8'd1, board[7], 8'd0};
-							else if(board[6] == board[7]) {board[4], board[5], board[6], board[7]} <= {board[4], board[5], board[6]+8'd1, 8'd0};
-							else {board[4], board[5], board[6], board[7]} <= {board[4], board[5], board[6], board[7]};
+                            if(board[5] == board[6]) begin
+                                {board[4], board[5], board[6], board[7]} <= {board[4], board[5]+8'd1, board[7], 8'd0};
+                                {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[6] == board[7]) begin
+                                {board[4], board[5], board[6], board[7]} <= {board[4], board[5], board[6]+8'd1, 8'd0};
+                                {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[4], board[5], board[6], board[7]} <= {board[4], board[5], board[6], board[7]};
+                                {to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
-					
+                    
 					if(board[8] == 8'd0 && board[9] == 8'd0 && board[10] == 8'd0 && board[11] == 8'd0) begin
 						{board[8], board[9], board[10], board[11]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[8] == 8'd0 && board[9] == 8'd0 && board[10] == 8'd0 && board[11] != 8'd0) begin
 						{board[8], board[9], board[10], board[11]} <= {board[11], 8'd0, 8'd0, 8'd0};
+						{to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[8] == 8'd0 && board[9] == 8'd0 && board[10] != 8'd0 && board[11] == 8'd0) begin
 						{board[8], board[9], board[10], board[11]} <= {board[10], 8'd0, 8'd0, 8'd0};
+						{to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[8] == 8'd0 && board[9] != 8'd0 && board[10] == 8'd0 && board[11] == 8'd0) begin
 						{board[8], board[9], board[10], board[11]} <= {board[9], 8'd0, 8'd0, 8'd0};
+						{to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[8] != 8'd0 && board[9] == 8'd0 && board[10] == 8'd0 && board[11] == 8'd0) begin
 						{board[8], board[9], board[10], board[11]} <= {board[8], 8'd0, 8'd0, 8'd0};
+						{to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[8] == 8'd0 && board[9] == 8'd0 && board[10] != 8'd0 && board[11] != 8'd0) begin
-						if(board[10] != board[11]) {board[8], board[9], board[10], board[11]} <= {board[10], board[11], 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[10] != board[11]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[10], board[11], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[8] == 8'd0 && board[9] != 8'd0 && board[10] == 8'd0 && board[11] != 8'd0) begin
-						if(board[9] != board[11]) {board[8], board[9], board[10], board[11]} <= {board[9], board[11], 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[9] != board[11]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[9], board[11], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[8] != 8'd0 && board[9] == 8'd0 && board[10] == 8'd0 && board[11] != 8'd0) begin
-						if(board[8] != board[11]) {board[8], board[9], board[10], board[11]} <= {board[8], board[11], 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[8] != board[11]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[11], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[8] == 8'd0 && board[9] != 8'd0 && board[10] != 8'd0 && board[11] == 8'd0) begin
-						if(board[9] != board[10]) {board[8], board[9], board[10], board[11]} <= {board[9], board[10], 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[9] != board[10]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[9], board[10], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[8] != 8'd0 && board[9] == 8'd0 && board[10] != 8'd0 && board[11] == 8'd0) begin
-						if(board[8] != board[10]) {board[8], board[9], board[10], board[11]} <= {board[8], board[10], 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[8] != board[10]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[10], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[8] != 8'd0 && board[9] != 8'd0 && board[10] == 8'd0 && board[11] == 8'd0) begin
-						if(board[8] != board[9]) {board[8], board[9], board[10], board[11]} <= {board[8], board[9], 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[8] != board[9]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[9], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[8] != 8'd0 && board[9] != 8'd0 && board[10] != 8'd0 && board[11] == 8'd0) begin
-						if(board[8] == board[9]) {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[10], 8'd0, 8'd0};
-						else if(board[9] == board[10]) {board[8], board[9], board[10], board[11]} <= {board[8], board[9]+8'd1, 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[8], board[9], board[10], 8'd0};
+                        if(board[8] == board[9]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[10], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[9] == board[10]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[9]+8'd1, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[9], board[10], 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[8] != 8'd0 && board[9] != 8'd0 && board[10] == 8'd0 && board[11] != 8'd0) begin
-						if(board[8] == board[9]) {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[11], 8'd0, 8'd0};
-						else if(board[9] == board[11]) {board[8], board[9], board[10], board[11]} <= {board[8], board[9]+8'd1, 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[8], board[9], board[11], 8'd0};
+                        if(board[8] == board[9]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[11], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[9] == board[11]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[9]+8'd1, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[9], board[11], 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[8] != 8'd0 && board[9] == 8'd0 && board[10] != 8'd0 && board[11] != 8'd0) begin
-						if(board[8] == board[10]) {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[11], 8'd0, 8'd0};
-						else if(board[10] == board[11]) {board[8], board[9], board[10], board[11]} <= {board[8], board[10]+8'd1, 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[8], board[10], board[11], 8'd0};
+                        if(board[8] == board[10]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[11], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[10] == board[11]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[10]+8'd1, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[8], board[10], board[11], 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[8] == 8'd0 && board[9] != 8'd0 && board[10] != 8'd0 && board[11] != 8'd0) begin
-						if(board[9] == board[10]) {board[8], board[9], board[10], board[11]} <= {board[9]+8'd1, board[11], 8'd0, 8'd0};
-						else if(board[10] == board[11]) {board[8], board[9], board[10], board[11]} <= {board[9], board[10]+8'd1, 8'd0, 8'd0};
-						else {board[8], board[9], board[10], board[11]} <= {board[9], board[10], board[11], 8'd0};
+                        if(board[9] == board[10]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[9]+8'd1, board[11], 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[10] == board[11]) begin
+                            {board[8], board[9], board[10], board[11]} <= {board[9], board[10]+8'd1, 8'd0, 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[8], board[9], board[10], board[11]} <= {board[9], board[10], board[11], 8'd0};
+                            {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[8] == board[9]) begin
-							if(board[10] == board[11]) {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[10]+8'd1, 8'd0, 8'd0};
-							else {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[10], board[11], 8'd0};
+                            if(board[10] == board[11]) begin
+                                {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[10]+8'd1, 8'd0, 8'd0};
+                                {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, board[10], board[11], 8'd0};
+                                {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[9] == board[10]) {board[8], board[9], board[10], board[11]} <= {board[8], board[9]+8'd1, board[11], 8'd0};
-							else if(board[10] == board[11]) {board[8], board[9], board[10], board[11]} <= {board[8], board[9], board[10]+8'd1, 8'd0};
-							else {board[8], board[9], board[10], board[11]} <= {board[8], board[9], board[10], board[11]};
+                            if(board[9] == board[10]) begin
+                                {board[8], board[9], board[10], board[11]} <= {board[8], board[9]+8'd1, board[11], 8'd0};
+                                {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[10] == board[11]) begin
+                                {board[8], board[9], board[10], board[11]} <= {board[8], board[9], board[10]+8'd1, 8'd0};
+                                {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[8], board[9], board[10], board[11]} <= {board[8], board[9], board[10], board[11]};
+                                {to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
-					
+                    
 					if(board[12] == 8'd0 && board[13] == 8'd0 && board[14] == 8'd0 && board[15] == 8'd0) begin
 						{board[12], board[13], board[14], board[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[12] == 8'd0 && board[13] == 8'd0 && board[14] == 8'd0 && board[15] != 8'd0) begin
 						{board[12], board[13], board[14], board[15]} <= {board[15], 8'd0, 8'd0, 8'd0};
+						{to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[12] == 8'd0 && board[13] == 8'd0 && board[14] != 8'd0 && board[15] == 8'd0) begin
 						{board[12], board[13], board[14], board[15]} <= {board[14], 8'd0, 8'd0, 8'd0};
+						{to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[12] == 8'd0 && board[13] != 8'd0 && board[14] == 8'd0 && board[15] == 8'd0) begin
 						{board[12], board[13], board[14], board[15]} <= {board[13], 8'd0, 8'd0, 8'd0};
+						{to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[12] != 8'd0 && board[13] == 8'd0 && board[14] == 8'd0 && board[15] == 8'd0) begin
 						{board[12], board[13], board[14], board[15]} <= {board[12], 8'd0, 8'd0, 8'd0};
+						{to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[12] == 8'd0 && board[13] == 8'd0 && board[14] != 8'd0 && board[15] != 8'd0) begin
-						if(board[14] != board[15]) {board[12], board[13], board[14], board[15]} <= {board[14], board[15], 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[14] != board[15]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[14], board[15], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[12] == 8'd0 && board[13] != 8'd0 && board[14] == 8'd0 && board[15] != 8'd0) begin
-						if(board[13] != board[15]) {board[12], board[13], board[14], board[15]} <= {board[13], board[15], 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[13] != board[15]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[13], board[15], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[13] == 8'd0 && board[14] == 8'd0 && board[15] != 8'd0) begin
-						if(board[12] != board[15]) {board[12], board[13], board[14], board[15]} <= {board[12], board[15], 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[12] != board[15]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[15], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[12] == 8'd0 && board[13] != 8'd0 && board[14] != 8'd0 && board[15] == 8'd0) begin
-						if(board[13] != board[14]) {board[12], board[13], board[14], board[15]} <= {board[13], board[14], 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[13] != board[14]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[13], board[14], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[13] == 8'd0 && board[14] != 8'd0 && board[15] == 8'd0) begin
-						if(board[12] != board[14]) {board[12], board[13], board[14], board[15]} <= {board[12], board[14], 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[12] != board[14]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[14], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[13] != 8'd0 && board[14] == 8'd0 && board[15] == 8'd0) begin
-						if(board[12] != board[13]) {board[12], board[13], board[14], board[15]} <= {board[12], board[13], 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[12] != board[13]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[13], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[13] != 8'd0 && board[14] != 8'd0 && board[15] == 8'd0) begin
-						if(board[12] == board[13]) {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[14], 8'd0, 8'd0};
-						else if(board[13] == board[14]) {board[12], board[13], board[14], board[15]} <= {board[12], board[13]+8'd1, 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[12], board[13], board[14], 8'd0};
+                        if(board[12] == board[13]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[14], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[13] == board[14]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[13]+8'd1, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[13], board[14], 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[13] != 8'd0 && board[14] == 8'd0 && board[15] != 8'd0) begin
-						if(board[12] == board[13]) {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[15], 8'd0, 8'd0};
-						else if(board[13] == board[15]) {board[12], board[13], board[14], board[15]} <= {board[12], board[13]+8'd1, 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[12], board[13], board[15], 8'd0};
+                        if(board[12] == board[13]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[15], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[13] == board[15]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[13]+8'd1, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[13], board[15], 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[13] == 8'd0 && board[14] != 8'd0 && board[15] != 8'd0) begin
-						if(board[12] == board[14]) {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[15], 8'd0, 8'd0};
-						else if(board[14] == board[15]) {board[12], board[13], board[14], board[15]} <= {board[12], board[14]+8'd1, 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[12], board[14], board[15], 8'd0};
+                        if(board[12] == board[14]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[15], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[14] == board[15]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[14]+8'd1, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[12], board[14], board[15], 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[12] == 8'd0 && board[13] != 8'd0 && board[14] != 8'd0 && board[15] != 8'd0) begin
-						if(board[13] == board[14]) {board[12], board[13], board[14], board[15]} <= {board[13]+8'd1, board[15], 8'd0, 8'd0};
-						else if(board[14] == board[15]) {board[12], board[13], board[14], board[15]} <= {board[13], board[14]+8'd1, 8'd0, 8'd0};
-						else {board[12], board[13], board[14], board[15]} <= {board[13], board[14], board[15], 8'd0};
+                        if(board[13] == board[14]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[13]+8'd1, board[15], 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[14] == board[15]) begin
+                            {board[12], board[13], board[14], board[15]} <= {board[13], board[14]+8'd1, 8'd0, 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[13], board[14], board[15]} <= {board[13], board[14], board[15], 8'd0};
+                            {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[12] == board[13]) begin
-							if(board[14] == board[15]) {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[14]+8'd1, 8'd0, 8'd0};
-							else {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[14], board[15], 8'd0};
+                            if(board[14] == board[15]) begin
+                                {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[14]+8'd1, 8'd0, 8'd0};
+                                {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, board[14], board[15], 8'd0};
+                                {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[13] == board[14]) {board[12], board[13], board[14], board[15]} <= {board[12], board[13]+8'd1, board[15], 8'd0};
-							else if(board[14] == board[15]) {board[12], board[13], board[14], board[15]} <= {board[12], board[13], board[14]+8'd1, 8'd0};
-							else {board[12], board[13], board[14], board[15]} <= {board[12], board[13], board[14], board[15]};
+                            if(board[13] == board[14]) begin
+                                {board[12], board[13], board[14], board[15]} <= {board[12], board[13]+8'd1, board[15], 8'd0};
+                                {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[14] == board[15]) begin
+                                {board[12], board[13], board[14], board[15]} <= {board[12], board[13], board[14]+8'd1, 8'd0};
+                                {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[12], board[13], board[14], board[15]} <= {board[12], board[13], board[14], board[15]};
+                                {to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 				end
 				else if(!down && !activeflag) begin
 					if(board[3] == 8'd0 && board[2] == 8'd0 && board[1] == 8'd0 && board[0] == 8'd0) begin
 						{board[3], board[2], board[1], board[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[3] == 8'd0 && board[2] == 8'd0 && board[1] == 8'd0 && board[0] != 8'd0) begin
 						{board[3], board[2], board[1], board[0]} <= {board[0], 8'd0, 8'd0, 8'd0};
+						{to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[3] == 8'd0 && board[2] == 8'd0 && board[1] != 8'd0 && board[0] == 8'd0) begin
 						{board[3], board[2], board[1], board[0]} <= {board[1], 8'd0, 8'd0, 8'd0};
+						{to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[3] == 8'd0 && board[2] != 8'd0 && board[1] == 8'd0 && board[0] == 8'd0) begin
 						{board[3], board[2], board[1], board[0]} <= {board[2], 8'd0, 8'd0, 8'd0};
+						{to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[3] != 8'd0 && board[2] == 8'd0 && board[1] == 8'd0 && board[0] == 8'd0) begin
 						{board[3], board[2], board[1], board[0]} <= {board[3], 8'd0, 8'd0, 8'd0};
+						{to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[3] == 8'd0 && board[2] == 8'd0 && board[1] != 8'd0 && board[0] != 8'd0) begin
-						if(board[1] != board[0]) {board[3], board[2], board[1], board[0]} <= {board[1], board[0], 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[1] != board[0]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[1], board[0], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[3] == 8'd0 && board[2] != 8'd0 && board[1] == 8'd0 && board[0] != 8'd0) begin
-						if(board[2] != board[0]) {board[3], board[2], board[1], board[0]} <= {board[2], board[0], 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[2] != board[0]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[2], board[0], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[2] == 8'd0 && board[1] == 8'd0 && board[0] != 8'd0) begin
-						if(board[3] != board[0]) {board[3], board[2], board[1], board[0]} <= {board[3], board[0], 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[3] != board[0]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[0], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[3] == 8'd0 && board[2] != 8'd0 && board[1] != 8'd0 && board[0] == 8'd0) begin
-						if(board[2] != board[1]) {board[3], board[2], board[1], board[0]} <= {board[2], board[1], 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[2] != board[1]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[2], board[1], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[2] == 8'd0 && board[1] != 8'd0 && board[0] == 8'd0) begin
-						if(board[3] != board[1]) {board[3], board[2], board[1], board[0]} <= {board[3], board[1], 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[3] != board[1]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[1], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[2] != 8'd0 && board[1] == 8'd0 && board[0] == 8'd0) begin
-						if(board[3] != board[2]) {board[3], board[2], board[1], board[0]} <= {board[3], board[2], 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[3] != board[2]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[2], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[2] != 8'd0 && board[1] != 8'd0 && board[0] == 8'd0) begin
-						if(board[3] == board[2]) {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[1], 8'd0, 8'd0};
-						else if(board[2] == board[1]) {board[3], board[2], board[1], board[0]} <= {board[3], board[2]+8'd1, 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[3], board[2], board[1], 8'd0};
+                        if(board[3] == board[2]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[1], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[2] == board[1]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[2]+8'd1, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[2], board[1], 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[2] != 8'd0 && board[1] == 8'd0 && board[0] != 8'd0) begin
-						if(board[3] == board[2]) {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[0], 8'd0, 8'd0};
-						else if(board[2] == board[0]) {board[3], board[2], board[1], board[0]} <= {board[3], board[2]+8'd1, 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[3], board[2], board[0], 8'd0};
+                        if(board[3] == board[2]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[0], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[2] == board[0]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[2]+8'd1, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[2], board[0], 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[3] != 8'd0 && board[2] == 8'd0 && board[1] != 8'd0 && board[0] != 8'd0) begin
-						if(board[3] == board[1]) {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[0], 8'd0, 8'd0};
-						else if(board[1] == board[0]) {board[3], board[2], board[1], board[0]} <= {board[3], board[1]+8'd1, 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[3], board[1], board[0], 8'd0};
+                        if(board[3] == board[1]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[0], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[1] == board[0]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[1]+8'd1, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[3], board[1], board[0], 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[3] == 8'd0 && board[2] != 8'd0 && board[1] != 8'd0 && board[0] != 8'd0) begin
-						if(board[2] == board[1]) {board[3], board[2], board[1], board[0]} <= {board[2]+8'd1, board[0], 8'd0, 8'd0};
-						else if(board[1] == board[0]) {board[3], board[2], board[1], board[0]} <= {board[2], board[1]+8'd1, 8'd0, 8'd0};
-						else {board[3], board[2], board[1], board[0]} <= {board[2], board[1], board[0], 8'd0};
+                        if(board[2] == board[1]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[2]+8'd1, board[0], 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[1] == board[0]) begin
+                            {board[3], board[2], board[1], board[0]} <= {board[2], board[1]+8'd1, 8'd0, 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[3], board[2], board[1], board[0]} <= {board[2], board[1], board[0], 8'd0};
+                            {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[3] == board[2]) begin
-							if(board[1] == board[0]) {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[1]+8'd1, 8'd0, 8'd0};
-							else {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[1], board[0], 8'd0};
+                            if(board[1] == board[0]) begin
+                                {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[1]+8'd1, 8'd0, 8'd0};
+                                {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, board[1], board[0], 8'd0};
+                                {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[2] == board[1]) {board[3], board[2], board[1], board[0]} <= {board[3], board[2]+8'd1, board[0], 8'd0};
-							else if(board[1] == board[0]) {board[3], board[2], board[1], board[0]} <= {board[3], board[2], board[1]+8'd1, 8'd0};
-							else {board[3], board[2], board[1], board[0]} <= {board[3], board[2], board[1], board[0]};
+                            if(board[2] == board[1]) begin
+                                {board[3], board[2], board[1], board[0]} <= {board[3], board[2]+8'd1, board[0], 8'd0};
+                                {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[1] == board[0]) begin
+                                {board[3], board[2], board[1], board[0]} <= {board[3], board[2], board[1]+8'd1, 8'd0};
+                                {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[3], board[2], board[1], board[0]} <= {board[3], board[2], board[1], board[0]};
+                                {to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 					
 					if(board[7] == 8'd0 && board[6] == 8'd0 && board[5] == 8'd0 && board[4] == 8'd0) begin
 						{board[7], board[6], board[5], board[4]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[7] == 8'd0 && board[6] == 8'd0 && board[5] == 8'd0 && board[4] != 8'd0) begin
 						{board[7], board[6], board[5], board[4]} <= {board[4], 8'd0, 8'd0, 8'd0};
+						{to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[7] == 8'd0 && board[6] == 8'd0 && board[5] != 8'd0 && board[4] == 8'd0) begin
 						{board[7], board[6], board[5], board[4]} <= {board[5], 8'd0, 8'd0, 8'd0};
+						{to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[7] == 8'd0 && board[6] != 8'd0 && board[5] == 8'd0 && board[4] == 8'd0) begin
 						{board[7], board[6], board[5], board[4]} <= {board[6], 8'd0, 8'd0, 8'd0};
+						{to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[7] != 8'd0 && board[6] == 8'd0 && board[5] == 8'd0 && board[4] == 8'd0) begin
 						{board[7], board[6], board[5], board[4]} <= {board[7], 8'd0, 8'd0, 8'd0};
+						{to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[7] == 8'd0 && board[6] == 8'd0 && board[5] != 8'd0 && board[4] != 8'd0) begin
-						if(board[5] != board[4]) {board[7], board[6], board[5], board[4]} <= {board[5], board[4], 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[5] != board[4]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[5], board[4], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[7] == 8'd0 && board[6] != 8'd0 && board[5] == 8'd0 && board[4] != 8'd0) begin
-						if(board[6] != board[4]) {board[7], board[6], board[5], board[4]} <= {board[6], board[4], 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[6] != board[4]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[6], board[4], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[7] != 8'd0 && board[6] == 8'd0 && board[5] == 8'd0 && board[4] != 8'd0) begin
-						if(board[7] != board[4]) {board[7], board[6], board[5], board[4]} <= {board[7], board[4], 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[7] != board[4]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[4], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[7] == 8'd0 && board[6] != 8'd0 && board[5] != 8'd0 && board[4] == 8'd0) begin
-						if(board[6] != board[5]) {board[7], board[6], board[5], board[4]} <= {board[6], board[5], 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[6] != board[5]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[6], board[5], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[7] != 8'd0 && board[6] == 8'd0 && board[5] != 8'd0 && board[4] == 8'd0) begin
-						if(board[7] != board[5]) {board[7], board[6], board[5], board[4]} <= {board[7], board[5], 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[7] != board[5]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[5], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[7] != 8'd0 && board[6] != 8'd0 && board[5] == 8'd0 && board[4] == 8'd0) begin
-						if(board[7] != board[6]) {board[7], board[6], board[5], board[4]} <= {board[7], board[6], 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[7] != board[6]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[6], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[7] != 8'd0 && board[6] != 8'd0 && board[5] != 8'd0 && board[4] == 8'd0) begin
-						if(board[7] == board[6]) {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[5], 8'd0, 8'd0};
-						else if(board[6] == board[5]) {board[7], board[6], board[5], board[4]} <= {board[7], board[6]+8'd1, 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[7], board[6], board[5], 8'd0};
+                        if(board[7] == board[6]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[5], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[6] == board[5]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[6]+8'd1, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[6], board[5], 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[7] != 8'd0 && board[6] != 8'd0 && board[5] == 8'd0 && board[4] != 8'd0) begin
-						if(board[7] == board[6]) {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[4], 8'd0, 8'd0};
-						else if(board[6] == board[4]) {board[7], board[6], board[5], board[4]} <= {board[7], board[6]+8'd1, 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[7], board[6], board[4], 8'd0};
+                        if(board[7] == board[6]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[4], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[6] == board[4]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[6]+8'd1, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[6], board[4], 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[7] != 8'd0 && board[6] == 8'd0 && board[5] != 8'd0 && board[4] != 8'd0) begin
-						if(board[7] == board[5]) {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[4], 8'd0, 8'd0};
-						else if(board[5] == board[4]) {board[7], board[6], board[5], board[4]} <= {board[7], board[5]+8'd1, 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[7], board[5], board[4], 8'd0};
+                        if(board[7] == board[5]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[4], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[5] == board[4]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[5]+8'd1, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[7], board[5], board[4], 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[7] == 8'd0 && board[6] != 8'd0 && board[5] != 8'd0 && board[4] != 8'd0) begin
-						if(board[6] == board[5]) {board[7], board[6], board[5], board[4]} <= {board[6]+8'd1, board[4], 8'd0, 8'd0};
-						else if(board[5] == board[4]) {board[7], board[6], board[5], board[4]} <= {board[6], board[5]+8'd1, 8'd0, 8'd0};
-						else {board[7], board[6], board[5], board[4]} <= {board[6], board[5], board[4], 8'd0};
+                        if(board[6] == board[5]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[6]+8'd1, board[4], 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[5] == board[4]) begin
+                            {board[7], board[6], board[5], board[4]} <= {board[6], board[5]+8'd1, 8'd0, 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[7], board[6], board[5], board[4]} <= {board[6], board[5], board[4], 8'd0};
+                            {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[7] == board[6]) begin
-							if(board[5] == board[4]) {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[5]+8'd1, 8'd0, 8'd0};
-							else {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[5], board[4], 8'd0};
+                            if(board[5] == board[4]) begin
+                                {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[5]+8'd1, 8'd0, 8'd0};
+                                {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, board[5], board[4], 8'd0};
+                                {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[6] == board[5]) {board[7], board[6], board[5], board[4]} <= {board[7], board[6]+8'd1, board[4], 8'd0};
-							else if(board[5] == board[4]) {board[7], board[6], board[5], board[4]} <= {board[7], board[6], board[5]+8'd1, 8'd0};
-							else {board[7], board[6], board[5], board[4]} <= {board[7], board[6], board[5], board[4]};
+                            if(board[6] == board[5]) begin
+                                {board[7], board[6], board[5], board[4]} <= {board[7], board[6]+8'd1, board[4], 8'd0};
+                                {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[5] == board[4]) begin
+                                {board[7], board[6], board[5], board[4]} <= {board[7], board[6], board[5]+8'd1, 8'd0};
+                                {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[7], board[6], board[5], board[4]} <= {board[7], board[6], board[5], board[4]};
+                                {to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 					
 					if(board[11] == 8'd0 && board[10] == 8'd0 && board[9] == 8'd0 && board[8] == 8'd0) begin
 						{board[11], board[10], board[9], board[8]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[11] == 8'd0 && board[10] == 8'd0 && board[9] == 8'd0 && board[8] != 8'd0) begin
 						{board[11], board[10], board[9], board[8]} <= {board[8], 8'd0, 8'd0, 8'd0};
+						{to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[11] == 8'd0 && board[10] == 8'd0 && board[9] != 8'd0 && board[8] == 8'd0) begin
 						{board[11], board[10], board[9], board[8]} <= {board[9], 8'd0, 8'd0, 8'd0};
+						{to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[11] == 8'd0 && board[10] != 8'd0 && board[9] == 8'd0 && board[8] == 8'd0) begin
 						{board[11], board[10], board[9], board[8]} <= {board[10], 8'd0, 8'd0, 8'd0};
+						{to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[11] != 8'd0 && board[10] == 8'd0 && board[9] == 8'd0 && board[8] == 8'd0) begin
 						{board[11], board[10], board[9], board[8]} <= {board[11], 8'd0, 8'd0, 8'd0};
+						{to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[11] == 8'd0 && board[10] == 8'd0 && board[9] != 8'd0 && board[8] != 8'd0) begin
-						if(board[9] != board[8]) {board[11], board[10], board[9], board[8]} <= {board[9], board[8], 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[9] != board[8]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[9], board[8], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[11] == 8'd0 && board[10] != 8'd0 && board[9] == 8'd0 && board[8] != 8'd0) begin
-						if(board[10] != board[8]) {board[11], board[10], board[9], board[8]} <= {board[10], board[8], 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[10] != board[8]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[10], board[8], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[11] != 8'd0 && board[10] == 8'd0 && board[9] == 8'd0 && board[8] != 8'd0) begin
-						if(board[11] != board[8]) {board[11], board[10], board[9], board[8]} <= {board[11], board[8], 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[11] != board[8]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[8], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[11] == 8'd0 && board[10] != 8'd0 && board[9] != 8'd0 && board[8] == 8'd0) begin
-						if(board[10] != board[9]) {board[11], board[10], board[9], board[8]} <= {board[10], board[9], 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[10] != board[9]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[10], board[9], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[11] != 8'd0 && board[10] == 8'd0 && board[9] != 8'd0 && board[8] == 8'd0) begin
-						if(board[11] != board[9]) {board[11], board[10], board[9], board[8]} <= {board[11], board[9], 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[11] != board[9]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[9], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[11] != 8'd0 && board[10] != 8'd0 && board[9] == 8'd0 && board[8] == 8'd0) begin
-						if(board[11] != board[10]) {board[11], board[10], board[9], board[8]} <= {board[11], board[10], 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[11] != board[10]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[10], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[11] != 8'd0 && board[10] != 8'd0 && board[9] != 8'd0 && board[8] == 8'd0) begin
-						if(board[11] == board[10]) {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[9], 8'd0, 8'd0};
-						else if(board[10] == board[9]) {board[11], board[10], board[9], board[8]} <= {board[11], board[10]+8'd1, 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[11], board[10], board[9], 8'd0};
+                        if(board[11] == board[10]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[9], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[10] == board[9]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[10]+8'd1, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[10], board[9], 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[11] != 8'd0 && board[10] != 8'd0 && board[9] == 8'd0 && board[8] != 8'd0) begin
-						if(board[11] == board[10]) {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[8], 8'd0, 8'd0};
-						else if(board[10] == board[8]) {board[11], board[10], board[9], board[8]} <= {board[11], board[10]+8'd1, 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[11], board[10], board[8], 8'd0};
+                        if(board[11] == board[10]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[8], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[10] == board[8]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[10]+8'd1, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[10], board[8], 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[11] != 8'd0 && board[10] == 8'd0 && board[9] != 8'd0 && board[8] != 8'd0) begin
-						if(board[11] == board[9]) {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[8], 8'd0, 8'd0};
-						else if(board[9] == board[8]) {board[11], board[10], board[9], board[8]} <= {board[11], board[9]+8'd1, 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[11], board[9], board[8], 8'd0};
+                        if(board[11] == board[9]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[8], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[9] == board[8]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[9]+8'd1, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[11], board[9], board[8], 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[11] == 8'd0 && board[10] != 8'd0 && board[9] != 8'd0 && board[8] != 8'd0) begin
-						if(board[10] == board[9]) {board[11], board[10], board[9], board[8]} <= {board[10]+8'd1, board[8], 8'd0, 8'd0};
-						else if(board[9] == board[8]) {board[11], board[10], board[9], board[8]} <= {board[10], board[9]+8'd1, 8'd0, 8'd0};
-						else {board[11], board[10], board[9], board[8]} <= {board[10], board[9], board[8], 8'd0};
+                        if(board[10] == board[9]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[10]+8'd1, board[8], 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[9] == board[8]) begin
+                            {board[11], board[10], board[9], board[8]} <= {board[10], board[9]+8'd1, 8'd0, 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[11], board[10], board[9], board[8]} <= {board[10], board[9], board[8], 8'd0};
+                            {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[11] == board[10]) begin
-							if(board[9] == board[8]) {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[9]+8'd1, 8'd0, 8'd0};
-							else {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[9], board[8], 8'd0};
+                            if(board[9] == board[8]) begin
+                                {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[9]+8'd1, 8'd0, 8'd0};
+                                {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, board[9], board[8], 8'd0};
+                                {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[10] == board[9]) {board[11], board[10], board[9], board[8]} <= {board[11], board[10]+8'd1, board[8], 8'd0};
-							else if(board[9] == board[8]) {board[11], board[10], board[9], board[8]} <= {board[11], board[10], board[9]+8'd1, 8'd0};
-							else {board[11], board[10], board[9], board[8]} <= {board[11], board[10], board[9], board[8]};
+                            if(board[10] == board[9]) begin
+                                {board[11], board[10], board[9], board[8]} <= {board[11], board[10]+8'd1, board[8], 8'd0};
+                                {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[9] == board[8]) begin
+                                {board[11], board[10], board[9], board[8]} <= {board[11], board[10], board[9]+8'd1, 8'd0};
+                                {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[11], board[10], board[9], board[8]} <= {board[11], board[10], board[9], board[8]};
+                                {to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 					
 					if(board[15] == 8'd0 && board[14] == 8'd0 && board[13] == 8'd0 && board[12] == 8'd0) begin
 						{board[15], board[14], board[13], board[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[15] == 8'd0 && board[14] == 8'd0 && board[13] == 8'd0 && board[12] != 8'd0) begin
 						{board[15], board[14], board[13], board[12]} <= {board[12], 8'd0, 8'd0, 8'd0};
+						{to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[15] == 8'd0 && board[14] == 8'd0 && board[13] != 8'd0 && board[12] == 8'd0) begin
 						{board[15], board[14], board[13], board[12]} <= {board[13], 8'd0, 8'd0, 8'd0};
+						{to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[15] == 8'd0 && board[14] != 8'd0 && board[13] == 8'd0 && board[12] == 8'd0) begin
 						{board[15], board[14], board[13], board[12]} <= {board[14], 8'd0, 8'd0, 8'd0};
+						{to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[15] != 8'd0 && board[14] == 8'd0 && board[13] == 8'd0 && board[12] == 8'd0) begin
 						{board[15], board[14], board[13], board[12]} <= {board[15], 8'd0, 8'd0, 8'd0};
+						{to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[15] == 8'd0 && board[14] == 8'd0 && board[13] != 8'd0 && board[12] != 8'd0) begin
-						if(board[13] != board[12]) {board[15], board[14], board[13], board[12]} <= {board[13], board[12], 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[13] != board[12]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[13], board[12], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[15] == 8'd0 && board[14] != 8'd0 && board[13] == 8'd0 && board[12] != 8'd0) begin
-						if(board[14] != board[12]) {board[15], board[14], board[13], board[12]} <= {board[14], board[12], 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[14] != board[12]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[14], board[12], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[14] == 8'd0 && board[13] == 8'd0 && board[12] != 8'd0) begin
-						if(board[15] != board[12]) {board[15], board[14], board[13], board[12]} <= {board[15], board[12], 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[15] != board[12]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[12], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[15] == 8'd0 && board[14] != 8'd0 && board[13] != 8'd0 && board[12] == 8'd0) begin
-						if(board[14] != board[13]) {board[15], board[14], board[13], board[12]} <= {board[14], board[13], 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[14] != board[13]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[14], board[13], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[14] == 8'd0 && board[13] != 8'd0 && board[12] == 8'd0) begin
-						if(board[15] != board[13]) {board[15], board[14], board[13], board[12]} <= {board[15], board[13], 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[15] != board[13]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[13], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[14] != 8'd0 && board[13] == 8'd0 && board[12] == 8'd0) begin
-						if(board[15] != board[14]) {board[15], board[14], board[13], board[12]} <= {board[15], board[14], 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[15] != board[14]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[14], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[14] != 8'd0 && board[13] != 8'd0 && board[12] == 8'd0) begin
-						if(board[15] == board[14]) {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[13], 8'd0, 8'd0};
-						else if(board[14] == board[13]) {board[15], board[14], board[13], board[12]} <= {board[15], board[14]+8'd1, 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[15], board[14], board[13], 8'd0};
+                        if(board[15] == board[14]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[13], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[14] == board[13]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[14]+8'd1, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[14], board[13], 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[14] != 8'd0 && board[13] == 8'd0 && board[12] != 8'd0) begin
-						if(board[15] == board[14]) {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[12], 8'd0, 8'd0};
-						else if(board[14] == board[12]) {board[15], board[14], board[13], board[12]} <= {board[15], board[14]+8'd1, 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[15], board[14], board[12], 8'd0};
+                        if(board[15] == board[14]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[12], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[14] == board[12]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[14]+8'd1, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[14], board[12], 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[14] == 8'd0 && board[13] != 8'd0 && board[12] != 8'd0) begin
-						if(board[15] == board[13]) {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[12], 8'd0, 8'd0};
-						else if(board[13] == board[12]) {board[15], board[14], board[13], board[12]} <= {board[15], board[13]+8'd1, 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[15], board[13], board[12], 8'd0};
+                        if(board[15] == board[13]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[12], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[13] == board[12]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[13]+8'd1, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[15], board[13], board[12], 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[15] == 8'd0 && board[14] != 8'd0 && board[13] != 8'd0 && board[12] != 8'd0) begin
-						if(board[14] == board[13]) {board[15], board[14], board[13], board[12]} <= {board[14]+8'd1, board[12], 8'd0, 8'd0};
-						else if(board[13] == board[12]) {board[15], board[14], board[13], board[12]} <= {board[14], board[13]+8'd1, 8'd0, 8'd0};
-						else {board[15], board[14], board[13], board[12]} <= {board[14], board[13], board[12], 8'd0};
+                        if(board[14] == board[13]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[14]+8'd1, board[12], 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[13] == board[12]) begin
+                            {board[15], board[14], board[13], board[12]} <= {board[14], board[13]+8'd1, 8'd0, 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[14], board[13], board[12]} <= {board[14], board[13], board[12], 8'd0};
+                            {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[15] == board[14]) begin
-							if(board[13] == board[12]) {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[13]+8'd1, 8'd0, 8'd0};
-							else {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[13], board[12], 8'd0};
+                            if(board[13] == board[12]) begin
+                                {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[13]+8'd1, 8'd0, 8'd0};
+                                {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, board[13], board[12], 8'd0};
+                                {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[14] == board[13]) {board[15], board[14], board[13], board[12]} <= {board[15], board[14]+8'd1, board[12], 8'd0};
-							else if(board[13] == board[12]) {board[15], board[14], board[13], board[12]} <= {board[15], board[14], board[13]+8'd1, 8'd0};
-							else {board[15], board[14], board[13], board[12]} <= {board[15], board[14], board[13], board[12]};
+                            if(board[14] == board[13]) begin
+                                {board[15], board[14], board[13], board[12]} <= {board[15], board[14]+8'd1, board[12], 8'd0};
+                                {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[13] == board[12]) begin
+                                {board[15], board[14], board[13], board[12]} <= {board[15], board[14], board[13]+8'd1, 8'd0};
+                                {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[15], board[14], board[13], board[12]} <= {board[15], board[14], board[13], board[12]};
+                                {to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 				end
 				else if(!right && !activeflag) begin
 					if(board[12] == 8'd0 && board[8] == 8'd0 && board[4] == 8'd0 && board[0] == 8'd0) begin
 						{board[12], board[8], board[4], board[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[12] == 8'd0 && board[8] == 8'd0 && board[4] == 8'd0 && board[0] != 8'd0) begin
 						{board[12], board[8], board[4], board[0]} <= {board[0], 8'd0, 8'd0, 8'd0};
+						{to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[12] == 8'd0 && board[8] == 8'd0 && board[4] != 8'd0 && board[0] == 8'd0) begin
 						{board[12], board[8], board[4], board[0]} <= {board[4], 8'd0, 8'd0, 8'd0};
+						{to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[12] == 8'd0 && board[8] != 8'd0 && board[4] == 8'd0 && board[0] == 8'd0) begin
 						{board[12], board[8], board[4], board[0]} <= {board[8], 8'd0, 8'd0, 8'd0};
+						{to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[12] != 8'd0 && board[8] == 8'd0 && board[4] == 8'd0 && board[0] == 8'd0) begin
 						{board[12], board[8], board[4], board[0]} <= {board[12], 8'd0, 8'd0, 8'd0};
+						{to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[12] == 8'd0 && board[8] == 8'd0 && board[4] != 8'd0 && board[0] != 8'd0) begin
-						if(board[4] != board[0]) {board[12], board[8], board[4], board[0]} <= {board[4], board[0], 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[4] != board[0]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[4], board[0], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[12] == 8'd0 && board[8] != 8'd0 && board[4] == 8'd0 && board[0] != 8'd0) begin
-						if(board[8] != board[0]) {board[12], board[8], board[4], board[0]} <= {board[8], board[0], 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[8] != board[0]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[8], board[0], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[8] == 8'd0 && board[4] == 8'd0 && board[0] != 8'd0) begin
-						if(board[12] != board[0]) {board[12], board[8], board[4], board[0]} <= {board[12], board[0], 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[12] != board[0]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[0], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[12] == 8'd0 && board[8] != 8'd0 && board[4] != 8'd0 && board[0] == 8'd0) begin
-						if(board[8] != board[4]) {board[12], board[8], board[4], board[0]} <= {board[8], board[4], 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[8] != board[4]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[8], board[4], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[8] == 8'd0 && board[4] != 8'd0 && board[0] == 8'd0) begin
-						if(board[12] != board[4]) {board[12], board[8], board[4], board[0]} <= {board[12], board[4], 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[12] != board[4]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[4], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[8] != 8'd0 && board[4] == 8'd0 && board[0] == 8'd0) begin
-						if(board[12] != board[8]) {board[12], board[8], board[4], board[0]} <= {board[12], board[8], 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[12] != board[8]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[8], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[8] != 8'd0 && board[4] != 8'd0 && board[0] == 8'd0) begin
-						if(board[12] == board[8]) {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[4], 8'd0, 8'd0};
-						else if(board[8] == board[4]) {board[12], board[8], board[4], board[0]} <= {board[12], board[8]+8'd1, 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[12], board[8], board[4], 8'd0};
+                        if(board[12] == board[8]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[4], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[8] == board[4]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[8]+8'd1, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[8], board[4], 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[8] != 8'd0 && board[4] == 8'd0 && board[0] != 8'd0) begin
-						if(board[12] == board[8]) {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[0], 8'd0, 8'd0};
-						else if(board[8] == board[0]) {board[12], board[8], board[4], board[0]} <= {board[12], board[8]+8'd1, 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[12], board[8], board[0], 8'd0};
+                        if(board[12] == board[8]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[0], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[8] == board[0]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[8]+8'd1, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[8], board[0], 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[12] != 8'd0 && board[8] == 8'd0 && board[4] != 8'd0 && board[0] != 8'd0) begin
-						if(board[12] == board[4]) {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[0], 8'd0, 8'd0};
-						else if(board[4] == board[0]) {board[12], board[8], board[4], board[0]} <= {board[12], board[4]+8'd1, 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[12], board[4], board[0], 8'd0};
+                        if(board[12] == board[4]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[0], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[4] == board[0]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[4]+8'd1, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[12], board[4], board[0], 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[12] == 8'd0 && board[8] != 8'd0 && board[4] != 8'd0 && board[0] != 8'd0) begin
-						if(board[8] == board[4]) {board[12], board[8], board[4], board[0]} <= {board[8]+8'd1, board[0], 8'd0, 8'd0};
-						else if(board[4] == board[0]) {board[12], board[8], board[4], board[0]} <= {board[8], board[4]+8'd1, 8'd0, 8'd0};
-						else {board[12], board[8], board[4], board[0]} <= {board[8], board[4], board[0], 8'd0};
+                        if(board[8] == board[4]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[8]+8'd1, board[0], 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[4] == board[0]) begin
+                            {board[12], board[8], board[4], board[0]} <= {board[8], board[4]+8'd1, 8'd0, 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[12], board[8], board[4], board[0]} <= {board[8], board[4], board[0], 8'd0};
+                            {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[12] == board[8]) begin
-							if(board[4] == board[0]) {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[4]+8'd1, 8'd0, 8'd0};
-							else {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[4], board[0], 8'd0};
+                            if(board[4] == board[0]) begin
+                                {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[4]+8'd1, 8'd0, 8'd0};
+                                {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, board[4], board[0], 8'd0};
+                                {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[8] == board[4]) {board[12], board[8], board[4], board[0]} <= {board[12], board[8]+8'd1, board[0], 8'd0};
-							else if(board[4] == board[0]) {board[12], board[8], board[4], board[0]} <= {board[12], board[8], board[4]+8'd1, 8'd0};
-							else {board[12], board[8], board[4], board[0]} <= {board[12], board[8], board[4], board[0]};
+                            if(board[8] == board[4]) begin
+                                {board[12], board[8], board[4], board[0]} <= {board[12], board[8]+8'd1, board[0], 8'd0};
+                                {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[4] == board[0]) begin
+                                {board[12], board[8], board[4], board[0]} <= {board[12], board[8], board[4]+8'd1, 8'd0};
+                                {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[12], board[8], board[4], board[0]} <= {board[12], board[8], board[4], board[0]};
+                                {to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
-					
+                    
 					if(board[13] == 8'd0 && board[9] == 8'd0 && board[5] == 8'd0 && board[1] == 8'd0) begin
 						{board[13], board[9], board[5], board[1]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[13] == 8'd0 && board[9] == 8'd0 && board[5] == 8'd0 && board[1] != 8'd0) begin
 						{board[13], board[9], board[5], board[1]} <= {board[1], 8'd0, 8'd0, 8'd0};
+						{to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[13] == 8'd0 && board[9] == 8'd0 && board[5] != 8'd0 && board[1] == 8'd0) begin
 						{board[13], board[9], board[5], board[1]} <= {board[5], 8'd0, 8'd0, 8'd0};
+						{to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[13] == 8'd0 && board[9] != 8'd0 && board[5] == 8'd0 && board[1] == 8'd0) begin
 						{board[13], board[9], board[5], board[1]} <= {board[9], 8'd0, 8'd0, 8'd0};
+						{to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[13] != 8'd0 && board[9] == 8'd0 && board[5] == 8'd0 && board[1] == 8'd0) begin
 						{board[13], board[9], board[5], board[1]} <= {board[13], 8'd0, 8'd0, 8'd0};
+						{to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[13] == 8'd0 && board[9] == 8'd0 && board[5] != 8'd0 && board[1] != 8'd0) begin
-						if(board[5] != board[1]) {board[13], board[9], board[5], board[1]} <= {board[5], board[1], 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[5] != board[1]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[5], board[1], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[13] == 8'd0 && board[9] != 8'd0 && board[5] == 8'd0 && board[1] != 8'd0) begin
-						if(board[9] != board[1]) {board[13], board[9], board[5], board[1]} <= {board[9], board[1], 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[9] != board[1]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[9], board[1], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[13] != 8'd0 && board[9] == 8'd0 && board[5] == 8'd0 && board[1] != 8'd0) begin
-						if(board[13] != board[1]) {board[13], board[9], board[5], board[1]} <= {board[13], board[1], 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[13] != board[1]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[1], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[13] == 8'd0 && board[9] != 8'd0 && board[5] != 8'd0 && board[1] == 8'd0) begin
-						if(board[9] != board[5]) {board[13], board[9], board[5], board[1]} <= {board[9], board[5], 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[9] != board[5]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[9], board[5], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[9]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[13] != 8'd0 && board[9] == 8'd0 && board[5] != 8'd0 && board[1] == 8'd0) begin
-						if(board[13] != board[5]) {board[13], board[9], board[5], board[1]} <= {board[13], board[5], 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[13] != board[5]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[5], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[13] != 8'd0 && board[9] != 8'd0 && board[5] == 8'd0 && board[1] == 8'd0) begin
-						if(board[13] != board[9]) {board[13], board[9], board[5], board[1]} <= {board[13], board[9], 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[13] != board[9]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[9], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[13] != 8'd0 && board[9] != 8'd0 && board[5] != 8'd0 && board[1] == 8'd0) begin
-						if(board[13] == board[9]) {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[5], 8'd0, 8'd0};
-						else if(board[9] == board[5]) {board[13], board[9], board[5], board[1]} <= {board[13], board[9]+8'd1, 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[13], board[9], board[5], 8'd0};
+                        if(board[13] == board[9]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[5], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[9] == board[5]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[9]+8'd1, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[9], board[5], 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[13] != 8'd0 && board[9] != 8'd0 && board[5] == 8'd0 && board[1] != 8'd0) begin
-						if(board[13] == board[9]) {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[1], 8'd0, 8'd0};
-						else if(board[9] == board[1]) {board[13], board[9], board[5], board[1]} <= {board[13], board[9]+8'd1, 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[13], board[9], board[1], 8'd0};
+                        if(board[13] == board[9]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[1], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[9] == board[1]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[9]+8'd1, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[9], board[1], 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[13] != 8'd0 && board[9] == 8'd0 && board[5] != 8'd0 && board[1] != 8'd0) begin
-						if(board[13] == board[5]) {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[1], 8'd0, 8'd0};
-						else if(board[5] == board[1]) {board[13], board[9], board[5], board[1]} <= {board[13], board[5]+8'd1, 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[13], board[5], board[1], 8'd0};
+                        if(board[13] == board[5]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[1], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[5] == board[1]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[5]+8'd1, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[13], board[5], board[1], 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[13] == 8'd0 && board[9] != 8'd0 && board[5] != 8'd0 && board[1] != 8'd0) begin
-						if(board[9] == board[5]) {board[13], board[9], board[5], board[1]} <= {board[9]+8'd1, board[1], 8'd0, 8'd0};
-						else if(board[5] == board[1]) {board[13], board[9], board[5], board[1]} <= {board[9], board[5]+8'd1, 8'd0, 8'd0};
-						else {board[13], board[9], board[5], board[1]} <= {board[9], board[5], board[1], 8'd0};
+                        if(board[9] == board[5]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[9]+8'd1, board[1], 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[5] == board[1]) begin
+                            {board[13], board[9], board[5], board[1]} <= {board[9], board[5]+8'd1, 8'd0, 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[13], board[9], board[5], board[1]} <= {board[9], board[5], board[1], 8'd0};
+                            {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[13] == board[9]) begin
-							if(board[5] == board[1]) {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[5]+8'd1, 8'd0, 8'd0};
-							else {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[5], board[1], 8'd0};
+                            if(board[5] == board[1]) begin
+                                {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[5]+8'd1, 8'd0, 8'd0};
+                                {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, board[5], board[1], 8'd0};
+                                {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[9] == board[5]) {board[13], board[9], board[5], board[1]} <= {board[13], board[9]+8'd1, board[1], 8'd0};
-							else if(board[5] == board[1]) {board[13], board[9], board[5], board[1]} <= {board[13], board[9], board[5]+8'd1, 8'd0};
-							else {board[13], board[9], board[5], board[1]} <= {board[13], board[9], board[5], board[1]};
+                            if(board[9] == board[5]) begin
+                                {board[13], board[9], board[5], board[1]} <= {board[13], board[9]+8'd1, board[1], 8'd0};
+                                {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[5] == board[1]) begin
+                                {board[13], board[9], board[5], board[1]} <= {board[13], board[9], board[5]+8'd1, 8'd0};
+                                {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[13], board[9], board[5], board[1]} <= {board[13], board[9], board[5], board[1]};
+                                {to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 					
 					if(board[14] == 8'd0 && board[10] == 8'd0 && board[6] == 8'd0 && board[2] == 8'd0) begin
 						{board[14], board[10], board[6], board[2]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[14] == 8'd0 && board[10] == 8'd0 && board[6] == 8'd0 && board[2] != 8'd0) begin
 						{board[14], board[10], board[6], board[2]} <= {board[2], 8'd0, 8'd0, 8'd0};
+						{to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[14] == 8'd0 && board[10] == 8'd0 && board[6] != 8'd0 && board[2] == 8'd0) begin
 						{board[14], board[10], board[6], board[2]} <= {board[6], 8'd0, 8'd0, 8'd0};
+						{to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[14] == 8'd0 && board[10] != 8'd0 && board[6] == 8'd0 && board[2] == 8'd0) begin
 						{board[14], board[10], board[6], board[2]} <= {board[10], 8'd0, 8'd0, 8'd0};
+						{to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[14] != 8'd0 && board[10] == 8'd0 && board[6] == 8'd0 && board[2] == 8'd0) begin
 						{board[14], board[10], board[6], board[2]} <= {board[14], 8'd0, 8'd0, 8'd0};
+						{to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[14] == 8'd0 && board[10] == 8'd0 && board[6] != 8'd0 && board[2] != 8'd0) begin
-						if(board[6] != board[2]) {board[14], board[10], board[6], board[2]} <= {board[6], board[2], 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[6] != board[2]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[6], board[2], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[6]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[14] == 8'd0 && board[10] != 8'd0 && board[6] == 8'd0 && board[2] != 8'd0) begin
-						if(board[10] != board[2]) {board[14], board[10], board[6], board[2]} <= {board[10], board[2], 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[10] != board[2]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[10], board[2], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[14] != 8'd0 && board[10] == 8'd0 && board[6] == 8'd0 && board[2] != 8'd0) begin
-						if(board[14] != board[2]) {board[14], board[10], board[6], board[2]} <= {board[14], board[2], 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[14] != board[2]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[2], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[14] == 8'd0 && board[10] != 8'd0 && board[6] != 8'd0 && board[2] == 8'd0) begin
-						if(board[10] != board[6]) {board[14], board[10], board[6], board[2]} <= {board[10], board[6], 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[10] != board[6]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[10], board[6], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[10]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[14] != 8'd0 && board[10] == 8'd0 && board[6] != 8'd0 && board[2] == 8'd0) begin
-						if(board[14] != board[6]) {board[14], board[10], board[6], board[2]} <= {board[14], board[6], 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[14] != board[6]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[6], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[14] != 8'd0 && board[10] != 8'd0 && board[6] == 8'd0 && board[2] == 8'd0) begin
-						if(board[14] != board[10]) {board[14], board[10], board[6], board[2]} <= {board[14], board[10], 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[14] != board[10]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[10], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[14] != 8'd0 && board[10] != 8'd0 && board[6] != 8'd0 && board[2] == 8'd0) begin
-						if(board[14] == board[10]) {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[6], 8'd0, 8'd0};
-						else if(board[10] == board[6]) {board[14], board[10], board[6], board[2]} <= {board[14], board[10]+8'd1, 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[14], board[10], board[6], 8'd0};
+                        if(board[14] == board[10]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[6], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[10] == board[6]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[10]+8'd1, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[10], board[6], 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[14] != 8'd0 && board[10] != 8'd0 && board[6] == 8'd0 && board[2] != 8'd0) begin
-						if(board[14] == board[10]) {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[2], 8'd0, 8'd0};
-						else if(board[10] == board[2]) {board[14], board[10], board[6], board[2]} <= {board[14], board[10]+8'd1, 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[14], board[10], board[2], 8'd0};
+                        if(board[14] == board[10]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[2], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[10] == board[2]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[10]+8'd1, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[10], board[2], 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[14] != 8'd0 && board[10] == 8'd0 && board[6] != 8'd0 && board[2] != 8'd0) begin
-						if(board[14] == board[6]) {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[2], 8'd0, 8'd0};
-						else if(board[6] == board[2]) {board[14], board[10], board[6], board[2]} <= {board[14], board[6]+8'd1, 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[14], board[6], board[2], 8'd0};
+                        if(board[14] == board[6]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[2], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[6] == board[2]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[6]+8'd1, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[14], board[6], board[2], 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[14] == 8'd0 && board[10] != 8'd0 && board[6] != 8'd0 && board[2] != 8'd0) begin
-						if(board[10] == board[6]) {board[14], board[10], board[6], board[2]} <= {board[10]+8'd1, board[2], 8'd0, 8'd0};
-						else if(board[6] == board[2]) {board[14], board[10], board[6], board[2]} <= {board[10], board[6]+8'd1, 8'd0, 8'd0};
-						else {board[14], board[10], board[6], board[2]} <= {board[10], board[6], board[2], 8'd0};
+                        if(board[10] == board[6]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[10]+8'd1, board[2], 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[6] == board[2]) begin
+                            {board[14], board[10], board[6], board[2]} <= {board[10], board[6]+8'd1, 8'd0, 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[14], board[10], board[6], board[2]} <= {board[10], board[6], board[2], 8'd0};
+                            {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[14] == board[10]) begin
-							if(board[6] == board[2]) {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[6]+8'd1, 8'd0, 8'd0};
-							else {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[6], board[2], 8'd0};
+                            if(board[6] == board[2]) begin
+                                {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[6]+8'd1, 8'd0, 8'd0};
+                                {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, board[6], board[2], 8'd0};
+                                {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[10] == board[6]) {board[14], board[10], board[6], board[2]} <= {board[14], board[10]+8'd1, board[2], 8'd0};
-							else if(board[6] == board[2]) {board[14], board[10], board[6], board[2]} <= {board[14], board[10], board[6]+8'd1, 8'd0};
-							else {board[14], board[10], board[6], board[2]} <= {board[14], board[10], board[6], board[2]};
+                            if(board[10] == board[6]) begin
+                                {board[14], board[10], board[6], board[2]} <= {board[14], board[10]+8'd1, board[2], 8'd0};
+                                {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[6] == board[2]) begin
+                                {board[14], board[10], board[6], board[2]} <= {board[14], board[10], board[6]+8'd1, 8'd0};
+                                {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[14], board[10], board[6], board[2]} <= {board[14], board[10], board[6], board[2]};
+                                {to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 					
 					if(board[15] == 8'd0 && board[11] == 8'd0 && board[7] == 8'd0 && board[3] == 8'd0) begin
 						{board[15], board[11], board[7], board[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+						{to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[15] == 8'd0 && board[11] == 8'd0 && board[7] == 8'd0 && board[3] != 8'd0) begin
 						{board[15], board[11], board[7], board[3]} <= {board[3], 8'd0, 8'd0, 8'd0};
+						{to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 					end
 					else if(board[15] == 8'd0 && board[11] == 8'd0 && board[7] != 8'd0 && board[3] == 8'd0) begin
 						{board[15], board[11], board[7], board[3]} <= {board[7], 8'd0, 8'd0, 8'd0};
+						{to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd2, 8'd0};
 					end
 					else if(board[15] == 8'd0 && board[11] != 8'd0 && board[7] == 8'd0 && board[3] == 8'd0) begin
 						{board[15], board[11], board[7], board[3]} <= {board[11], 8'd0, 8'd0, 8'd0};
+						{to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 					end
 					else if(board[15] != 8'd0 && board[11] == 8'd0 && board[7] == 8'd0 && board[3] == 8'd0) begin
 						{board[15], board[11], board[7], board[3]} <= {board[15], 8'd0, 8'd0, 8'd0};
+						{to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 					end
 					else if(board[15] == 8'd0 && board[11] == 8'd0 && board[7] != 8'd0 && board[3] != 8'd0) begin
-						if(board[7] != board[3]) {board[15], board[11], board[7], board[3]} <= {board[7], board[3], 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[7] != board[3]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[7], board[3], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[15] == 8'd0 && board[11] != 8'd0 && board[7] == 8'd0 && board[3] != 8'd0) begin
-						if(board[11] != board[3]) {board[15], board[11], board[7], board[3]} <= {board[11], board[3], 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[11] != board[3]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[11], board[3], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd0, 8'd3};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[11] == 8'd0 && board[7] == 8'd0 && board[3] != 8'd0) begin
-						if(board[15] != board[3]) {board[15], board[11], board[7], board[3]} <= {board[15], board[3], 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[15] != board[3]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[3], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+                        end
 					end
 					else if(board[15] == 8'd0 && board[11] != 8'd0 && board[7] != 8'd0 && board[3] == 8'd0) begin
-						if(board[11] != board[7]) {board[15], board[11], board[7], board[3]} <= {board[11], board[7], 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[11] != board[7]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[11], board[7], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[11] == 8'd0 && board[7] != 8'd0 && board[3] == 8'd0) begin
-						if(board[15] != board[7]) {board[15], board[11], board[7], board[3]} <= {board[15], board[7], 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[15] != board[7]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[7], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd2, 8'd0};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[11] != 8'd0 && board[7] == 8'd0 && board[3] == 8'd0) begin
-						if(board[15] != board[11]) {board[15], board[11], board[7], board[3]} <= {board[15], board[11], 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                        if(board[15] != board[11]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[11], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[11] != 8'd0 && board[7] != 8'd0 && board[3] == 8'd0) begin
-						if(board[15] == board[11]) {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[7], 8'd0, 8'd0};
-						else if(board[11] == board[7]) {board[15], board[11], board[7], board[3]} <= {board[15], board[11]+8'd1, 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[7], 8'd0};
+                        if(board[15] == board[11]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[7], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd1, 8'd0};
+                        end
+                        else if(board[11] == board[7]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[11]+8'd1, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd1, 8'd0};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[7], 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[11] != 8'd0 && board[7] == 8'd0 && board[3] != 8'd0) begin
-						if(board[15] == board[11]) {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[3], 8'd0, 8'd0};
-						else if(board[11] == board[3]) {board[15], board[11], board[7], board[3]} <= {board[15], board[11]+8'd1, 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[3], 8'd0};
+                        if(board[15] == board[11]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[3], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd0, 8'd2};
+                        end
+                        else if(board[11] == board[3]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[11]+8'd1, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[3], 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                        end
 					end
 					else if(board[15] != 8'd0 && board[11] == 8'd0 && board[7] != 8'd0 && board[3] != 8'd0) begin
-						if(board[15] == board[7]) {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[3], 8'd0, 8'd0};
-						else if(board[7] == board[3]) {board[15], board[11], board[7], board[3]} <= {board[15], board[7]+8'd1, 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[15], board[7], board[3], 8'd0};
+                        if(board[15] == board[7]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[3], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+                        end
+                        else if(board[7] == board[3]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[7]+8'd1, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[15], board[7], board[3], 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                        end
 					end
 					else if(board[15] == 8'd0 && board[11] != 8'd0 && board[7] != 8'd0 && board[3] != 8'd0) begin
-						if(board[11] == board[7]) {board[15], board[11], board[7], board[3]} <= {board[11]+8'd1, board[3], 8'd0, 8'd0};
-						else if(board[7] == board[3]) {board[15], board[11], board[7], board[3]} <= {board[11], board[7]+8'd1, 8'd0, 8'd0};
-						else {board[15], board[11], board[7], board[3]} <= {board[11], board[7], board[3], 8'd0};
+                        if(board[11] == board[7]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[11]+8'd1, board[3], 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd2, 8'd2};
+                        end
+                        else if(board[7] == board[3]) begin
+                            {board[15], board[11], board[7], board[3]} <= {board[11], board[7]+8'd1, 8'd0, 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                        end
+                        else begin
+                            {board[15], board[11], board[7], board[3]} <= {board[11], board[7], board[3], 8'd0};
+                            {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                        end
 					end
 					else begin
 						if(board[15] == board[11]) begin
-							if(board[7] == board[3]) {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[7]+8'd1, 8'd0, 8'd0};
-							else {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[7], board[3], 8'd0};
+                            if(board[7] == board[3]) begin
+                                {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[7]+8'd1, 8'd0, 8'd0};
+                                {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd1, 8'd2};
+                            end
+                            else begin
+                                {board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, board[7], board[3], 8'd0};
+                                {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd1, 8'd1, 8'd1};
+                            end
 						end
 						else begin
-							if(board[11] == board[7]) {board[15], board[11], board[7], board[3]} <= {board[15], board[11]+8'd1, board[3], 8'd0};
-							else if(board[7] == board[3]) {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[7]+8'd1, 8'd0};
-							else {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[7], board[3]};
+                            if(board[11] == board[7]) begin
+                                {board[15], board[11], board[7], board[3]} <= {board[15], board[11]+8'd1, board[3], 8'd0};
+                                {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd1, 8'd1};
+                            end
+                            else if(board[7] == board[3]) begin
+                                {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[7]+8'd1, 8'd0};
+                                {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd1};
+                            end
+                            else begin
+                                {board[15], board[11], board[7], board[3]} <= {board[15], board[11], board[7], board[3]};
+                                {to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+                            end
 						end
 					end
 				end
