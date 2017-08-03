@@ -1,14 +1,14 @@
 from PIL import Image
 import sys
 
-print "filename?"
-sys.stdout.flush()
+sys.stderr.write("filename?")
+sys.stderr.flush()
 filename = raw_input()
-print "top_col?"
-sys.stdout.flush()
+sys.stderr.write("top_col?")
+sys.stderr.flush()
 top_col = raw_input()
-print "top_row?"
-sys.stdout.flush()
+sys.stderr.write("top_row?")
+sys.stderr.flush()
 top_row = raw_input()
 
 thick = 5
