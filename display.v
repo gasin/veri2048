@@ -6,6 +6,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 	reg red, green, blue;
 	reg activeflag;
 	reg appearflag;
+	reg moveflag;
 	reg endflag;
 	reg [31:0] clockcounter;
 	reg [7:0] board [0:15];
@@ -1511,14 +1512,44 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			{board[1], board[5], board[9], board[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 			{board[2], board[6], board[10], board[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
 			{board[3], board[7], board[11], board[15]} <= {8'd0, 8'd1, 8'd0, 8'd0};
+			{origin[0], origin[4], origin[8], origin[12]} <= {8'd0, 8'd2, 8'd0, 8'd0};
+			{origin[1], origin[5], origin[9], origin[13]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+			{origin[2], origin[6], origin[10], origin[14]} <= {8'd0, 8'd0, 8'd0, 8'd0};
+			{origin[3], origin[7], origin[11], origin[15]} <= {8'd0, 8'd1, 8'd0, 8'd0};
 			activeflag <= 1'b0;
 			appearflag <= 1'b0;
+			moveflag <= 1'b0;
 			endflag <= 1'b0;
 			clockcounter <= 32'd0;
 		end
 		else if(!endflag) begin
+			{origin[0], origin[1], origin[2], origin[3]} <= {board[0], board[1], board[2], board[3]};
+			{origin[4], origin[5], origin[6], origin[7]} <= {board[4], board[5], board[6], board[7]};
+			{origin[8], origin[9], origin[10], origin[11]} <= {board[8], board[9], board[10], board[11]};
+			{origin[12], origin[13], origin[14], origin[15]} <= {board[12], board[13], board[14], board[15]};
+			
 			clockcounter <= clockcounter + 32'd1;
-			if(!appearflag && up && down && left && right) begin
+			
+			if(board[0]>0&&board[1]>0&&board[2]>0&&board[3]>0&&board[4]>0&&board[5]>0&&board[6]>0&&board[7]>0) begin
+			if(board[8]>0&&board[9]>0&&board[10]>0&&board[11]>0&&board[12]>0&&board[13]>0&&board[14]>0&&board[15]>0) begin
+			if(board[0]!=board[1]&&board[1]!=board[2]&&board[2]!=board[3]) begin
+			if(board[4]!=board[5]&&board[5]!=board[6]&&board[6]!=board[7]) begin
+			if(board[8]!=board[9]&&board[9]!=board[10]&&board[10]!=board[11]) begin
+			if(board[12]!=board[13]&&board[13]!=board[14]&&board[14]!=board[15]) begin
+			if(board[0]!=board[4]&&board[4]!=board[8]&&board[8]!=board[12]) begin
+			if(board[1]!=board[5]&&board[5]!=board[9]&&board[9]!=board[13]) begin
+			if(board[2]!=board[6]&&board[6]!=board[10]&&board[10]!=board[14]) begin
+			if(board[3]!=board[7]&&board[7]!=board[11]&&board[11]!=board[15]) begin
+				endflag <= 1'b1;
+			end end end end end end end end end end
+			if(board[0]==8'd11||board[1]==8'd11||board[2]==8'd11||board[3]==8'd11) begin
+			if(board[4]==8'd11||board[5]==8'd11||board[9]==8'd11||board[7]==8'd11) begin
+			if(board[8]==8'd11||board[9]==8'd11||board[10]==8'd11||board[11]==8'd11) begin
+			if(board[13]==8'd11||board[13]==8'd11||board[14]==8'd11||board[15]==8'd11) begin
+				endflag <= 1'b1;
+			end end end end 
+			
+			if(!moveflag && !appearflag && up && down && left && right) begin
 				activeflag <= 1'b0;
 			end
 			else begin
@@ -2664,26 +2695,15 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 					end
 				end
 				if((!up || !down || !left || !right) && !activeflag) begin
-					if(board[0]>0&&board[1]>0&&board[2]>0&&board[3]>0&&board[4]>0&&board[5]>0&&board[6]>0&&board[7]>0) begin
-					if(board[8]>0&&board[9]>0&&board[10]>0&&board[11]>0&&board[12]>0&&board[13]>0&&board[14]>0&&board[15]>0) begin
-					if(board[0]!=board[1]&&board[1]!=board[2]&&board[2]!=board[3]) begin
-					if(board[4]!=board[5]&&board[5]!=board[6]&&board[6]!=board[7]) begin
-					if(board[8]!=board[9]&&board[9]!=board[10]&&board[10]!=board[11]) begin
-					if(board[12]!=board[13]&&board[13]!=board[14]&&board[14]!=board[15]) begin
-					if(board[0]!=board[4]&&board[4]!=board[8]&&board[8]!=board[12]) begin
-					if(board[1]!=board[5]&&board[5]!=board[9]&&board[9]!=board[13]) begin
-					if(board[2]!=board[6]&&board[6]!=board[10]&&board[10]!=board[14]) begin
-					if(board[3]!=board[7]&&board[7]!=board[11]&&board[11]!=board[15]) begin
-						endflag <= 1'b1;
-					end end end end end end end end end end
-					if(board[0]==8'd11||board[1]==8'd11||board[2]==8'd11||board[3]==8'd11) begin
-					if(board[4]==8'd11||board[5]==8'd11||board[9]==8'd11||board[7]==8'd11) begin
-					if(board[8]==8'd11||board[9]==8'd11||board[10]==8'd11||board[11]==8'd11) begin
-					if(board[13]==8'd11||board[13]==8'd11||board[14]==8'd11||board[15]==8'd11) begin
-						endflag <= 1'b1;
-					end end end end 
-					appearflag <= 1'b1;
+					moveflag <= 1'b1;
 				end
+			end
+			if(moveflag) begin
+				if({board[0],board[1],board[2],board[3]} != {origin[0],origin[1],origin[2],origin[3]}) appearflag <= 1'b1;
+				else if({board[4],board[5],board[6],board[7]} != {origin[4],origin[5],origin[6],origin[7]}) appearflag <= 1'b1;
+				else if({board[8],board[9],board[10],board[11]} != {origin[8],origin[9],origin[10],origin[11]}) appearflag <= 1'b1;
+				else if({board[12],board[13],board[14],board[15]} != {origin[12],origin[13],origin[14],origin[15]}) appearflag <= 1'b1;
+				moveflag <= 1'b0;
 			end
 			if(appearflag) begin
 				if(board[clockcounter[12:9]] == 8'd0) begin
