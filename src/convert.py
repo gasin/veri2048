@@ -22,7 +22,7 @@ size = bi_im.size
 for x in range(size[0]):
     for y in range(size[1]):
         if bi_im.getpixel((x, y)) == 0:
-            print "else if(row >= top_row+" + str(y) + "*thick && row < top_row+(" + str(y) + "+1)*thick && col >= top_col+" + str(x) + "*thick && col < top_col+(" + str(x) + "+1)*thick)) begin"
+            print "else if(row >= cell_position_row[cell_index] + 20 +"+ str(y) + "*thick && row < cell_position_row[cell_index]+20+(" + str(y) + "+1)*thick && col >= cell_position_col[cell_index]+20+" + str(x) + "*thick && col < cell_position_col[cell_index]+20+(" + str(x) + "+1)*thick)) begin"
             print "\t{red, green, blue} <= 3'b000"
             print "end"
             
