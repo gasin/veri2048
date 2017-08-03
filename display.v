@@ -1669,12 +1669,10 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			clockcounter <= 32'd0;
 		end
 		else if(!endflag) begin
-			if(!moveflag_2) begin
-				{origin[0], origin[1], origin[2], origin[3]} <= {board[0], board[1], board[2], board[3]};
-				{origin[4], origin[5], origin[6], origin[7]} <= {board[4], board[5], board[6], board[7]};
-				{origin[8], origin[9], origin[10], origin[11]} <= {board[8], board[9], board[10], board[11]};
-				{origin[12], origin[13], origin[14], origin[15]} <= {board[12], board[13], board[14], board[15]};
-			end
+            {origin[0], origin[1], origin[2], origin[3]} <= {board[0], board[1], board[2], board[3]};
+            {origin[4], origin[5], origin[6], origin[7]} <= {board[4], board[5], board[6], board[7]};
+            {origin[8], origin[9], origin[10], origin[11]} <= {board[8], board[9], board[10], board[11]};
+            {origin[12], origin[13], origin[14], origin[15]} <= {board[12], board[13], board[14], board[15]};
 			
 			if(moveflag_2) begin
 				moveclocker <= moveclocker + 32'd1;
