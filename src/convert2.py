@@ -5,7 +5,7 @@ sys.stderr.write("filename?")
 sys.stderr.flush()
 filename = raw_input()
 
-thick = 5
+thick = 6
 
 im = Image.open("../png/" + filename + ".png")
 
