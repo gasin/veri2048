@@ -1477,7 +1477,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				else {red, green, blue} <= 3'b101;
 			end
 			else if(col >= 630 && col <= 630+40 && row >= 530 && row <= 530+40) begin
-				if(col-600 > row-530) {red, green, blue} <= 3'b101;
+				if(col-630 > row-530) {red, green, blue} <= 3'b101;
 				else {red, green, blue} <= 3'b011;
 			end
 			else if(endflag) {red, green, blue} <= 3'b100;
