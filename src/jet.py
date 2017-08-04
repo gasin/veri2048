@@ -43,5 +43,5 @@ size = bi_im.size
 for x in range(size[0]):
     for y in range(size[1]):
         if bi_im.getpixel((x, y)) == 0:
-            print "\t\t\telse if(jet_pos>1700&&jet_pos<=2200row>=20+jet_pos-1700+"+str(y)+"*2&&row<20+jet_pos-1700+"+str(y)+"*2+2&&col>=70+"+str(x)+"*2&&col<70+"+str(x)+"*2+2) {red, green, blue} <= 3'b000;"
+            print "\t\t\telse if(jet_pos>1700&&jet_pos<=2200&&row>=20+jet_pos-1700+"+str(y)+"*2&&row<20+jet_pos-1700+"+str(y)+"*2+2&&col>=70+"+str(x)+"*2&&col<70+"+str(x)+"*2+2) {red, green, blue} <= 3'b000;"
 
