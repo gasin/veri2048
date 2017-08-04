@@ -1480,6 +1480,234 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				if(col-630 > row-530) {red, green, blue} <= 3'b101;
 				else {red, green, blue} <= 3'b011;
 			end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=225&&col<225+80) begin
+                {red, green, blue} <= 3'b001;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=315&&col<315+80) begin
+                {red, green, blue} <= 3'b110;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=405&&col<405+80) begin
+                {red, green, blue} <= 3'b101;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
+            else if(row>=10&&row<10+80&&col>=495&&col<495+80) begin
+                {red, green, blue} <= 3'b011;
+            end
 			else if(endflag == 2'd1) {red, green, blue} <= 3'b100;
 			else if(endflag == 2'd2) {red, green, blue} <= 3'b010;
 			else {red, green, blue} <= 3'b111;
