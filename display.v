@@ -12,7 +12,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 	reg [31:0] clockcounter;
 	reg [7:0] board [0:15];
 	reg [7:0] origin [0:15];
-	reg [3:0] cell_index;
+	reg [4:0] cell_index;
 	reg [31:0] cell_position_row [0:15];
 	reg [31:0] cell_position_col [0:15];
 	reg [31:0] to_left [0:15];
@@ -74,6 +74,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				else if(col >= CELL_SIZE*4-BORDER_WIDTH && col <= CELL_SIZE*4+BORDER_WIDTH) {red, green, blue} <= 3'b000;
 				else if(col >= CELL_SIZE*5-BORDER_WIDTH && col <= CELL_SIZE*5+BORDER_WIDTH) {red, green, blue} <= 3'b000;
 				else if(col >= CELL_SIZE*6-BORDER_WIDTH && col <= CELL_SIZE*6+BORDER_WIDTH) {red, green, blue} <= 3'b000;
+                else if(cell_index == 5'd16) {red, green, blue} <= 3'b111;
 				else if(origin[cell_index] == 8'd0) {red, green, blue} <= 3'b111;
 				else if(origin[cell_index] == 8'd1) begin
 					if(row>=cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+10+3*6&&row<cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+10+(3+1)*6&&col>=cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+10+2*6&&col<cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+10+(2+1)*6) begin
@@ -1453,29 +1454,29 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				end
 				else {red, green, blue} <= 3'b111;
 			end
-			else if(col >= 100 && col <= 100+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b100;
-			else if(col >= 150 && col <= 150+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b010;
-			else if(col >= 200 && col <= 200+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b001;
-			else if(col >= 250 && col <= 250+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b110;
-			else if(col >= 300 && col <= 300+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b101;
-			else if(col >= 350 && col <= 350+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b011;
-			else if(col >= 400 && col <= 400+40 && row >= 530 && row <= 530+40) begin
-				if(col-400 > row-530) {red, green, blue} <= 3'b100;
+			else if(col >= 130 && col <= 130+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b100;
+			else if(col >= 180 && col <= 180+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b010;
+			else if(col >= 230 && col <= 230+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b001;
+			else if(col >= 280 && col <= 280+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b110;
+			else if(col >= 330 && col <= 330+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b101;
+			else if(col >= 380 && col <= 380+40 && row >= 530 && row <= 530+40) {red, green, blue} <= 3'b011;
+			else if(col >= 430 && col <= 430+40 && row >= 530 && row <= 530+40) begin
+				if(col-430 > row-530) {red, green, blue} <= 3'b100;
 				else {red, green, blue} <= 3'b010;
 			end
-			else if(col >= 450 && col <= 450+40 && row >= 530 && row <= 530+40) begin
-				if(col-450 > row-530) {red, green, blue} <= 3'b010;
+			else if(col >= 480 && col <= 480+40 && row >= 530 && row <= 530+40) begin
+				if(col-480 > row-530) {red, green, blue} <= 3'b010;
 				else {red, green, blue} <= 3'b001;
 			end
-			else if(col >= 500 && col <= 500+40 && row >= 530 && row <= 530+40) begin
-				if(col-500 > row-530) {red, green, blue} <= 3'b001;
+			else if(col >= 530 && col <= 530+40 && row >= 530 && row <= 530+40) begin
+				if(col-530 > row-530) {red, green, blue} <= 3'b001;
 				else {red, green, blue} <= 3'b100;
 			end
-			else if(col >= 550 && col <= 550+40 && row >= 530 && row <= 530+40) begin
-				if(col-550 > row-530) {red, green, blue} <= 3'b110;
+			else if(col >= 580 && col <= 580+40 && row >= 530 && row <= 530+40) begin
+				if(col-580 > row-530) {red, green, blue} <= 3'b110;
 				else {red, green, blue} <= 3'b101;
 			end
-			else if(col >= 600 && col <= 600+40 && row >= 530 && row <= 530+40) begin
+			else if(col >= 630 && col <= 630+40 && row >= 530 && row <= 530+40) begin
 				if(col-600 > row-530) {red, green, blue} <= 3'b101;
 				else {red, green, blue} <= 3'b011;
 			end
@@ -1553,6 +1554,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			&& col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd15]*movecounter+moveflag_2*to_right[4'd15]*movecounter
 			&& row >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_up[4'd15]*movecounter+moveflag_2*to_down[4'd15]*movecounter
 			&& row <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd15]*movecounter+moveflag_2*to_down[4'd15]*movecounter) cell_index <= 4'd15;
+            else cell_index <= 5'd16;
 			
 			/*
 			if(col >= CELL_SIZE*2+BORDER_WIDTH && col <= CELL_SIZE*3-BORDER_WIDTH) begin
