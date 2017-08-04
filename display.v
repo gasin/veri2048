@@ -1491,67 +1491,67 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			
 		end
 		else begin
-			if(origin[4'd0] != board[4'd0] && col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd0]*movecounter+moveflag_2*to_right[4'd0]*movecounter
+			if(origin[4'd0] != 8'd0 && col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd0]*movecounter+moveflag_2*to_right[4'd0]*movecounter
 			&& col <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_left[4'd0]*movecounter+moveflag_2*to_right[4'd0]*movecounter
 			&& row >= CELL_SIZE*1+BORDER_WIDTH-moveflag_2*to_up[4'd0]*movecounter+moveflag_2*to_down[4'd0]*movecounter
 			&& row <= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd0]*movecounter+moveflag_2*to_down[4'd0]*movecounter) cell_index <= 4'd0;
-			else if(origin[4'd1] != board[4'd1] && col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd1]*movecounter+moveflag_2*to_right[4'd1]*movecounter
+			else if(origin[4'd1] != 8'd0 && col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd1]*movecounter+moveflag_2*to_right[4'd1]*movecounter
 			&& col <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_left[4'd1]*movecounter+moveflag_2*to_right[4'd1]*movecounter
 			&& row >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_up[4'd1]*movecounter+moveflag_2*to_down[4'd1]*movecounter
 			&& row <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd1]*movecounter+moveflag_2*to_down[4'd1]*movecounter) cell_index <= 4'd1;
-			else if(origin[4'd2] != board[4'd2] && col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd2]*movecounter+moveflag_2*to_right[4'd2]*movecounter
+			else if(origin[4'd2] != 8'd0 && col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd2]*movecounter+moveflag_2*to_right[4'd2]*movecounter
 			&& col <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_left[4'd2]*movecounter+moveflag_2*to_right[4'd2]*movecounter
 			&& row >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_up[4'd2]*movecounter+moveflag_2*to_down[4'd2]*movecounter
 			&& row <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd2]*movecounter+moveflag_2*to_down[4'd2]*movecounter) cell_index <= 4'd2;
-			else if(origin[4'd3] != board[4'd3] && col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd3]*movecounter+moveflag_2*to_right[4'd3]*movecounter
+			else if(origin[4'd3] != 8'd0 && col >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_left[4'd3]*movecounter+moveflag_2*to_right[4'd3]*movecounter
 			&& col <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_left[4'd3]*movecounter+moveflag_2*to_right[4'd3]*movecounter
 			&& row >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_up[4'd3]*movecounter+moveflag_2*to_down[4'd3]*movecounter
 			&& row <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd3]*movecounter+moveflag_2*to_down[4'd3]*movecounter) cell_index <= 4'd3;
-			else if(origin[4'd4] != board[4'd4] && col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd4]*movecounter+moveflag_2*to_right[4'd4]*movecounter
+			else if(origin[4'd4] != 8'd0 && col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd4]*movecounter+moveflag_2*to_right[4'd4]*movecounter
 			&& col <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_left[4'd4]*movecounter+moveflag_2*to_right[4'd4]*movecounter
 			&& row >= CELL_SIZE*1+BORDER_WIDTH-moveflag_2*to_up[4'd4]*movecounter+moveflag_2*to_down[4'd4]*movecounter
 			&& row <= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd4]*movecounter+moveflag_2*to_down[4'd4]*movecounter) cell_index <= 4'd4;
-			else if(origin[4'd5] != board[4'd5] && col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd5]*movecounter+moveflag_2*to_right[4'd5]*movecounter
+			else if(origin[4'd5] != 8'd0 && col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd5]*movecounter+moveflag_2*to_right[4'd5]*movecounter
 			&& col <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_left[4'd5]*movecounter+moveflag_2*to_right[4'd5]*movecounter
 			&& row >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_up[4'd5]*movecounter+moveflag_2*to_down[4'd5]*movecounter
 			&& row <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd5]*movecounter+moveflag_2*to_down[4'd5]*movecounter) cell_index <= 4'd5;
-			else if(origin[4'd6] != board[4'd6] && col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd6]*movecounter+moveflag_2*to_right[4'd6]*movecounter
+			else if(origin[4'd6] != 8'd0 && col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd6]*movecounter+moveflag_2*to_right[4'd6]*movecounter
 			&& col <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_left[4'd6]*movecounter+moveflag_2*to_right[4'd6]*movecounter
 			&& row >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_up[4'd6]*movecounter+moveflag_2*to_down[4'd6]*movecounter
 			&& row <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd6]*movecounter+moveflag_2*to_down[4'd6]*movecounter) cell_index <= 4'd6;
-			else if(origin[4'd7] != board[4'd7] && col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd7]*movecounter+moveflag_2*to_right[4'd7]*movecounter
+			else if(origin[4'd7] != 8'd0 && col >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_left[4'd7]*movecounter+moveflag_2*to_right[4'd7]*movecounter
 			&& col <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_left[4'd7]*movecounter+moveflag_2*to_right[4'd7]*movecounter
 			&& row >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_up[4'd7]*movecounter+moveflag_2*to_down[4'd7]*movecounter
 			&& row <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd7]*movecounter+moveflag_2*to_down[4'd7]*movecounter) cell_index <= 4'd7;
-			else if(origin[4'd8] != board[4'd8] && col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd8]*movecounter+moveflag_2*to_right[4'd8]*movecounter
+			else if(origin[4'd8] != 8'd0 && col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd8]*movecounter+moveflag_2*to_right[4'd8]*movecounter
 			&& col <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_left[4'd8]*movecounter+moveflag_2*to_right[4'd8]*movecounter
 			&& row >= CELL_SIZE*1+BORDER_WIDTH-moveflag_2*to_up[4'd8]*movecounter+moveflag_2*to_down[4'd8]*movecounter
 			&& row <= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd8]*movecounter+moveflag_2*to_down[4'd8]*movecounter) cell_index <= 4'd8;
-			else if(origin[4'd9] != board[4'd9] && col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd9]*movecounter+moveflag_2*to_right[4'd9]*movecounter
+			else if(origin[4'd9] != 8'd0 && col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd9]*movecounter+moveflag_2*to_right[4'd9]*movecounter
 			&& col <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_left[4'd9]*movecounter+moveflag_2*to_right[4'd9]*movecounter
 			&& row >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_up[4'd9]*movecounter+moveflag_2*to_down[4'd9]*movecounter
 			&& row <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd9]*movecounter+moveflag_2*to_down[4'd9]*movecounter) cell_index <= 4'd9;
-			else if(origin[4'd10] != board[4'd10] && col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd10]*movecounter+moveflag_2*to_right[4'd10]*movecounter
+			else if(origin[4'd10] != 8'd0 && col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd10]*movecounter+moveflag_2*to_right[4'd10]*movecounter
 			&& col <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_left[4'd10]*movecounter+moveflag_2*to_right[4'd10]*movecounter
 			&& row >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_up[4'd10]*movecounter+moveflag_2*to_down[4'd10]*movecounter
 			&& row <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd10]*movecounter+moveflag_2*to_down[4'd10]*movecounter) cell_index <= 4'd10;
-			else if(origin[4'd11] != board[4'd11] && col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd11]*movecounter+moveflag_2*to_right[4'd11]*movecounter
+			else if(origin[4'd11] != 8'd0 && col >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_left[4'd11]*movecounter+moveflag_2*to_right[4'd11]*movecounter
 			&& col <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_left[4'd11]*movecounter+moveflag_2*to_right[4'd11]*movecounter
 			&& row >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_up[4'd11]*movecounter+moveflag_2*to_down[4'd11]*movecounter
 			&& row <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd11]*movecounter+moveflag_2*to_down[4'd11]*movecounter) cell_index <= 4'd11;
-			else if(origin[4'd12] != board[4'd12] && col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd12]*movecounter+moveflag_2*to_right[4'd12]*movecounter
+			else if(origin[4'd12] != 8'd0 && col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd12]*movecounter+moveflag_2*to_right[4'd12]*movecounter
 			&& col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd12]*movecounter+moveflag_2*to_right[4'd12]*movecounter
 			&& row >= CELL_SIZE*1+BORDER_WIDTH-moveflag_2*to_up[4'd12]*movecounter+moveflag_2*to_down[4'd12]*movecounter
 			&& row <= CELL_SIZE*2-BORDER_WIDTH-moveflag_2*to_up[4'd12]*movecounter+moveflag_2*to_down[4'd12]*movecounter) cell_index <= 4'd12;
-			else if(origin[4'd13] != board[4'd13] && col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd13]*movecounter+moveflag_2*to_right[4'd13]*movecounter
+			else if(origin[4'd13] != 8'd0 && col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd13]*movecounter+moveflag_2*to_right[4'd13]*movecounter
 			&& col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd13]*movecounter+moveflag_2*to_right[4'd13]*movecounter
 			&& row >= CELL_SIZE*2+BORDER_WIDTH-moveflag_2*to_up[4'd13]*movecounter+moveflag_2*to_down[4'd13]*movecounter
 			&& row <= CELL_SIZE*3-BORDER_WIDTH-moveflag_2*to_up[4'd13]*movecounter+moveflag_2*to_down[4'd13]*movecounter) cell_index <= 4'd13;
-			else if(origin[4'd14] != board[4'd14] && col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd14]*movecounter+moveflag_2*to_right[4'd14]*movecounter
+			else if(origin[4'd14] != 8'd0 && col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd14]*movecounter+moveflag_2*to_right[4'd14]*movecounter
 			&& col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd14]*movecounter+moveflag_2*to_right[4'd14]*movecounter
 			&& row >= CELL_SIZE*3+BORDER_WIDTH-moveflag_2*to_up[4'd14]*movecounter+moveflag_2*to_down[4'd14]*movecounter
 			&& row <= CELL_SIZE*4-BORDER_WIDTH-moveflag_2*to_up[4'd14]*movecounter+moveflag_2*to_down[4'd14]*movecounter) cell_index <= 4'd14;
-			else if(origin[4'd15] != board[4'd15] && col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd15]*movecounter+moveflag_2*to_right[4'd15]*movecounter
+			else if(origin[4'd15] != 8'd0 && col >= CELL_SIZE*5+BORDER_WIDTH-moveflag_2*to_left[4'd15]*movecounter+moveflag_2*to_right[4'd15]*movecounter
 			&& col <= CELL_SIZE*6-BORDER_WIDTH-moveflag_2*to_left[4'd15]*movecounter+moveflag_2*to_right[4'd15]*movecounter
 			&& row >= CELL_SIZE*4+BORDER_WIDTH-moveflag_2*to_up[4'd15]*movecounter+moveflag_2*to_down[4'd15]*movecounter
 			&& row <= CELL_SIZE*5-BORDER_WIDTH-moveflag_2*to_up[4'd15]*movecounter+moveflag_2*to_down[4'd15]*movecounter) cell_index <= 4'd15;
