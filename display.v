@@ -1,7 +1,7 @@
 
-module display(row, col, red, green, blue, color, up, down, left, right, vnotactive, CLK, RST);
+module display(row, col, red, green, blue, speed, up, down, left, right, missile, vnotactive, CLK, RST);
 	input [31:0] row, col;
-	input CLK, RST, color, up, down, left, right, vnotactive;
+	input CLK, RST, speed, up, down, left, right, missile, vnotactive;
 	output red, green, blue;
 	reg red, green, blue;
 	reg activeflag;
@@ -9,7 +9,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 	reg moveflag;
 	reg moveflag_2;
 	reg [1:0] endflag;
-	reg [31:0] clockcounter;
+	reg [63:0] clockcounter;
 	reg [7:0] board [0:15];
 	reg [7:0] origin [0:15];
 	reg [4:0] cell_index;
@@ -21,7 +21,11 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 	reg [31:0] to_down [0:15];
 	reg [31:0] moveclocker;
 	reg [31:0] movecounter;
-    reg [31:0] jet_pos;
+    reg [63:0] jet_pos;
+	reg clockflag;
+	reg missileclockflag;
+	reg [31:0] missile_col, missile_row;
+	reg [2:0] missile_flag;
 	parameter CELL_SIZE = 100;
 	parameter BORDER_WIDTH = 10;
 	
@@ -1455,6 +1459,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				end
 				else {red, green, blue} <= 3'b111;
 			end
+			else if(missile_flag!=0&&row>=missile_row&&row<=missile_row+5&&col>=missile_col&&col<=missile_col+5) {red, green, blue} <= 3'b000;
 			else if(jet_pos<=600&&row>=520+13*2&&row<520+13*2+2&&col>=70+jet_pos+1*2&&col<70+jet_pos+1*2+2) {red, green, blue} <= 3'b000;
 			else if(jet_pos<=600&&row>=520+12*2&&row<520+12*2+2&&col>=70+jet_pos+2*2&&col<70+jet_pos+2*2+2) {red, green, blue} <= 3'b000;
 			else if(jet_pos<=600&&row>=520+13*2&&row<520+13*2+2&&col>=70+jet_pos+2*2&&col<70+jet_pos+2*2+2) {red, green, blue} <= 3'b000;
@@ -2934,11 +2939,17 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			moveflag <= 1'b0;
 			moveflag_2 <= 1'b0;
 			endflag <= 2'd0;
-			clockcounter <= 32'd0;
+			clockcounter <= 64'd0;
+			clockflag <= 1'b0;
+			missileclockflag <= 1'b0;
 			
 			movecounter <= 32'd0;
 			moveclocker <= 32'd0;
-            jet_pos <= 32'd0;
+         jet_pos <= 64'd0;
+				
+			missile_row <= 32'd100;
+			missile_col <= 32'd200;
+			missile_flag <= 3'd0;
 			
 			to_left[0] <= 32'd0;
 			to_left[1] <= 32'd0;
@@ -3097,10 +3108,50 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				to_down[15] <= 32'd0;
 			end
 			
-			clockcounter <= clockcounter + 32'd1;
+			clockcounter <= clockcounter + 64'd1;
             
-            jet_pos <= clockcounter[30:16];
-            if(jet_pos >= 2200) jet_pos <= 32'd0;
+			if(jet_pos >= 2200) jet_pos <= 64'd0;
+			else if(clockcounter[17] == clockflag) begin
+				if(!speed) jet_pos <= jet_pos + 3;
+				else jet_pos <= jet_pos	+ 1;
+				clockflag <= clockflag + 1'b1;
+			end
+			if(clockcounter[15] == missileclockflag) begin
+				if(missile_flag == 1) missile_col <= missile_col+1;
+				else if(missile_flag == 2) missile_row <= missile_row-1;
+				else if(missile_flag == 3) missile_col <= missile_col-1;
+				else if(missile_flag == 4) missile_row <= missile_row+1;
+				missileclockflag <= missileclockflag + 1'b1;
+			end
+			
+			if(!missile && missile_flag==0) begin
+				if(jet_pos <= 600) begin
+					missile_row <= 520+30-3;
+					missile_col <= 70+jet_pos;
+					missile_flag <= 3'd1;
+				end
+				else if(jet_pos <= 1100) begin
+					missile_row <= 520+600-jet_pos;
+					missile_col <= 670+30-3;
+					missile_flag <= 3'd2;
+				end
+				else if(jet_pos <= 1700) begin
+					missile_row <= 20+30-1;
+					missile_col <= 670+1100-jet_pos;
+					missile_flag <= 3'd3;
+				end
+				else if(jet_pos <= 2200) begin
+					missile_row <= 20+jet_pos-1700;
+					missile_col <= 70+30;
+					missile_flag <= 3'd4;
+				end
+			end
+			
+			if(missile_row <= 1 || missile_row >= 598 || missile_col <= 1 || missile_col >= 798) begin
+				missile_flag <= 3'd0;
+				missile_row <= 100;
+				missile_col <= 200;
+			end
 			
 			if(board[0]>0&&board[1]>0&&board[2]>0&&board[3]>0&&board[4]>0&&board[5]>0&&board[6]>0&&board[7]>0
 			 &&board[8]>0&&board[9]>0&&board[10]>0&&board[11]>0&&board[12]>0&&board[13]>0&&board[14]>0&&board[15]>0
@@ -3114,7 +3165,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			 &&board[3]!=board[7]&&board[7]!=board[11]&&board[11]!=board[15]) endflag <= 2'd1;
 				
 			if(board[0]==8'd11||board[1]==8'd11||board[2]==8'd11||board[3]==8'd11
-			 ||board[4]==8'd11||board[5]==8'd11||board[9]==8'd11||board[7]==8'd11
+			 ||board[4]==8'd11||board[5]==8'd11||board[6]==8'd11||board[7]==8'd11
 			 ||board[8]==8'd11||board[9]==8'd11||board[10]==8'd11||board[11]==8'd11
 			 ||board[13]==8'd11||board[13]==8'd11||board[14]==8'd11||board[15]==8'd11) endflag <= 2'd2;
 			
