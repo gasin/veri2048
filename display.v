@@ -1676,10 +1676,10 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 		end
 		else if(endflag == 2'd0) begin
 			if(!moveflag && !moveflag_2) begin
-            {origin[0], origin[1], origin[2], origin[3]} <= {board[0], board[1], board[2], board[3]};
-            {origin[4], origin[5], origin[6], origin[7]} <= {board[4], board[5], board[6], board[7]};
-            {origin[8], origin[9], origin[10], origin[11]} <= {board[8], board[9], board[10], board[11]};
-            {origin[12], origin[13], origin[14], origin[15]} <= {board[12], board[13], board[14], board[15]};
+                {origin[0], origin[1], origin[2], origin[3]} <= {board[0], board[1], board[2], board[3]};
+                {origin[4], origin[5], origin[6], origin[7]} <= {board[4], board[5], board[6], board[7]};
+                {origin[8], origin[9], origin[10], origin[11]} <= {board[8], board[9], board[10], board[11]};
+                {origin[12], origin[13], origin[14], origin[15]} <= {board[12], board[13], board[14], board[15]};
 			end
 			
 			if(moveflag_2) begin
@@ -1837,7 +1837,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[0], board[4], board[8], board[12]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_left[0], to_left[4], to_left[8], to_left[12]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[0] == 8'd0 && board[4] != 8'd0 && board[8] != 8'd0 && board[12] == 8'd0) begin
@@ -2000,7 +2000,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[1], board[5], board[9], board[13]} <= {board[1]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_left[1], to_left[5], to_left[9], to_left[13]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[1] == 8'd0 && board[5] != 8'd0 && board[9] != 8'd0 && board[13] == 8'd0) begin
@@ -2163,7 +2163,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[2], board[6], board[10], board[14]} <= {board[2]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_left[2], to_left[6], to_left[10], to_left[14]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[2] == 8'd0 && board[6] != 8'd0 && board[10] != 8'd0 && board[14] == 8'd0) begin
@@ -2326,7 +2326,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[3], board[7], board[11], board[15]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_left[3], to_left[7], to_left[11], to_left[15]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[3] == 8'd0 && board[7] != 8'd0 && board[11] != 8'd0 && board[15] == 8'd0) begin
@@ -2490,7 +2490,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[0], board[1], board[2], board[3]} <= {board[0]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_up[0], to_up[1], to_up[2], to_up[3]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[0] == 8'd0 && board[1] != 8'd0 && board[2] != 8'd0 && board[3] == 8'd0) begin
@@ -2653,7 +2653,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[4], board[5], board[6], board[7]} <= {board[4]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_up[4], to_up[5], to_up[6], to_up[7]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[4] == 8'd0 && board[5] != 8'd0 && board[6] != 8'd0 && board[7] == 8'd0) begin
@@ -2816,7 +2816,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[8], board[9], board[10], board[11]} <= {board[8]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_up[8], to_up[9], to_up[10], to_up[11]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[8] == 8'd0 && board[9] != 8'd0 && board[10] != 8'd0 && board[11] == 8'd0) begin
@@ -2979,7 +2979,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[12], board[13], board[14], board[15]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_up[12], to_up[13], to_up[14], to_up[15]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[12] == 8'd0 && board[13] != 8'd0 && board[14] != 8'd0 && board[15] == 8'd0) begin
@@ -3143,7 +3143,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[3], board[2], board[1], board[0]} <= {board[3]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_down[3], to_down[2], to_down[1], to_down[0]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[3] == 8'd0 && board[2] != 8'd0 && board[1] != 8'd0 && board[0] == 8'd0) begin
@@ -3306,7 +3306,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[7], board[6], board[5], board[4]} <= {board[7]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_down[7], to_down[6], to_down[5], to_down[4]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[7] == 8'd0 && board[6] != 8'd0 && board[5] != 8'd0 && board[4] == 8'd0) begin
@@ -3469,7 +3469,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[11], board[10], board[9], board[8]} <= {board[11]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_down[11], to_down[10], to_down[9], to_down[8]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[11] == 8'd0 && board[10] != 8'd0 && board[9] != 8'd0 && board[8] == 8'd0) begin
@@ -3632,7 +3632,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[15], board[14], board[13], board[12]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_down[15], to_down[14], to_down[13], to_down[12]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[15] == 8'd0 && board[14] != 8'd0 && board[13] != 8'd0 && board[12] == 8'd0) begin
@@ -3796,7 +3796,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[12], board[8], board[4], board[0]} <= {board[12]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_right[12], to_right[8], to_right[4], to_right[0]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[12] == 8'd0 && board[8] != 8'd0 && board[4] != 8'd0 && board[0] == 8'd0) begin
@@ -3935,7 +3935,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 					else if(board[13] == 8'd0 && board[9] == 8'd0 && board[5] != 8'd0 && board[1] != 8'd0) begin
 						if(board[5] != board[1]) begin
 							{board[13], board[9], board[5], board[1]} <= {board[5], board[1], 8'd0, 8'd0};
-							{to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd2, 8'd2};
+							{to_right[13], to_right[9], to_right[5], to_right[1]} <= {8'd0, 8'd0, 8'd0, 8'd2};
 						end
 						else begin
 							{board[13], board[9], board[5], board[1]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
@@ -4122,7 +4122,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[14], board[10], board[6], board[2]} <= {board[14]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_right[14], to_right[10], to_right[6], to_right[2]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[14] == 8'd0 && board[10] != 8'd0 && board[6] != 8'd0 && board[2] == 8'd0) begin
@@ -4285,7 +4285,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[15], board[11], board[7], board[3]} <= {board[15]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd2, 8'd3};
+							{to_right[15], to_right[11], to_right[7], to_right[3]} <= {8'd0, 8'd0, 8'd0, 8'd3};
 						end
 					end
 					else if(board[15] == 8'd0 && board[11] != 8'd0 && board[7] != 8'd0 && board[3] == 8'd0) begin
