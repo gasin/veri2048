@@ -8,7 +8,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 	reg appearflag;
 	reg moveflag;
 	reg moveflag_2;
-	reg endflag;
+	reg [1:0] endflag;
 	reg [31:0] clockcounter;
 	reg [7:0] board [0:15];
 	reg [7:0] origin [0:15];
@@ -1480,7 +1480,8 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 				if(col-630 > row-530) {red, green, blue} <= 3'b101;
 				else {red, green, blue} <= 3'b011;
 			end
-			else if(endflag) {red, green, blue} <= 3'b100;
+			else if(endflag == 2'd1) {red, green, blue} <= 3'b100;
+            else if(endflag == 2'd2) {red, green, blue} <= 3'b010;
 			else {red, green, blue} <= 3'b111;
 		end
 	end
@@ -1599,7 +1600,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			appearflag <= 1'b0;
 			moveflag <= 1'b0;
 			moveflag_2 <= 1'b0;
-			endflag <= 1'b0;
+			endflag <= 2'd0;
 			clockcounter <= 32'd0;
 			
 			movecounter <= 32'd0;
@@ -1673,7 +1674,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			to_down[14] <= 32'd0;
 			to_down[15] <= 32'd0;
 		end
-		else if(!endflag) begin
+		else if(endflag == 2'd0) begin
 			if(!moveflag && !moveflag_2) begin
             {origin[0], origin[1], origin[2], origin[3]} <= {board[0], board[1], board[2], board[3]};
             {origin[4], origin[5], origin[6], origin[7]} <= {board[4], board[5], board[6], board[7]};
@@ -1774,13 +1775,13 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			if(board[1]!=board[5]&&board[5]!=board[9]&&board[9]!=board[13]) begin
 			if(board[2]!=board[6]&&board[6]!=board[10]&&board[10]!=board[14]) begin
 			if(board[3]!=board[7]&&board[7]!=board[11]&&board[11]!=board[15]) begin
-				endflag <= 1'b1;
+				endflag <= 2'd1;
 			end end end end end end end end end end
 			if(board[0]==8'd11||board[1]==8'd11||board[2]==8'd11||board[3]==8'd11) begin
 			if(board[4]==8'd11||board[5]==8'd11||board[9]==8'd11||board[7]==8'd11) begin
 			if(board[8]==8'd11||board[9]==8'd11||board[10]==8'd11||board[11]==8'd11) begin
 			if(board[13]==8'd11||board[13]==8'd11||board[14]==8'd11||board[15]==8'd11) begin
-				endflag <= 1'b1;
+				endflag <= 2'd2;
 			end end end end 
 			
 			if(up && down && left && right) begin
