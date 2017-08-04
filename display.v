@@ -707,7 +707,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 					else if(row>=cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+7*3&&row<cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+(7+1)*3&&col>=cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+6*3&&col<cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+(6+1)*3) begin
 						{red, green, blue} <= 3'b000;
 					end
-					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b100;
+					else if(col-cell_position_col[cell_index]+moveflag_2*to_left[cell_index]*movecounter-moveflag_2*to_right[cell_index]*movecounter > row-cell_position_row[cell_index]+moveflag_2*to_up[cell_index]*movecounter-moveflag_2*to_down[cell_index]*movecounter) {red, green, blue} <= 3'b100;
 					else {red, green, blue} <= 3'b010;
 				end
 				else if(origin[cell_index] == 8'd8) begin
@@ -909,7 +909,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 					else if(row>=cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+8*3&&row<cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+(8+1)*3&&col>=cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+7*3&&col<cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+(7+1)*3) begin
 						{red, green, blue} <= 3'b000;
 					end
-					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b010;
+					else if(col-cell_position_col[cell_index]+moveflag_2*to_left[cell_index]*movecounter-moveflag_2*to_right[cell_index]*movecounter > row-cell_position_row[cell_index]+moveflag_2*to_up[cell_index]*movecounter-moveflag_2*to_down[cell_index]*movecounter) {red, green, blue} <= 3'b010;
 					else {red, green, blue} <= 3'b001;
 				end
 				else if(origin[cell_index] == 8'd9) begin
@@ -1045,7 +1045,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 					else if(row>=cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+7*3&&row<cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+(7+1)*3&&col>=cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+8*3&&col<cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+(8+1)*3) begin
 						{red, green, blue} <= 3'b000;
 					end
-					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b001;
+					else if(col-cell_position_col[cell_index]+moveflag_2*to_left[cell_index]*movecounter-moveflag_2*to_right[cell_index]*movecounter > row-cell_position_row[cell_index]+moveflag_2*to_up[cell_index]*movecounter-moveflag_2*to_down[cell_index]*movecounter) {red, green, blue} <= 3'b001;
 					else {red, green, blue} <= 3'b100;
 				end
 				else if(origin[cell_index] == 8'd10) begin
@@ -1238,7 +1238,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 					else if(row>=cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+4*3&&row<cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+(4+1)*3&&col>=cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+9*3&&col<cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+(9+1)*3) begin
 						{red, green, blue} <= 3'b000;
 					end
-					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b110;
+					else if(col-cell_position_col[cell_index]+moveflag_2*to_left[cell_index]*movecounter-moveflag_2*to_right[cell_index]*movecounter > row-cell_position_row[cell_index]+moveflag_2*to_up[cell_index]*movecounter-moveflag_2*to_down[cell_index]*movecounter) {red, green, blue} <= 3'b110;
 					else {red, green, blue} <= 3'b101;
 				end
 				else if(origin[cell_index] == 8'd11) begin
@@ -1449,7 +1449,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 					else if(row>=cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+7*3&&row<cell_position_row[cell_index]-moveflag_2*to_up[cell_index]*movecounter+moveflag_2*to_down[cell_index]*movecounter+25+(7+1)*3&&col>=cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+9*3&&col<cell_position_col[cell_index]-moveflag_2*to_left[cell_index]*movecounter+moveflag_2*to_right[cell_index]*movecounter+8+32+(9+1)*3) begin
 						{red, green, blue} <= 3'b000;
 					end
-					else if(col-cell_position_col[cell_index] > row-cell_position_row[cell_index]) {red, green, blue} <= 3'b101;
+					else if(col-cell_position_col[cell_index]+moveflag_2*to_left[cell_index]*movecounter-moveflag_2*to_right[cell_index]*movecounter > row-cell_position_row[cell_index]+moveflag_2*to_up[cell_index]*movecounter-moveflag_2*to_down[cell_index]*movecounter) {red, green, blue} <= 3'b101;
 					else {red, green, blue} <= 3'b011;
 				end
 				else {red, green, blue} <= 3'b111;
@@ -1764,7 +1764,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			
 			if(moveflag_2) begin
 				moveclocker <= moveclocker + 32'd1;
-				movecounter <= moveclocker[28:18];
+				movecounter <= moveclocker[26:17];
 				if(movecounter >= 32'd100) begin
 					moveclocker <= 32'd0;
 					movecounter <= 32'd0;
@@ -1845,24 +1845,21 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 			
 			clockcounter <= clockcounter + 32'd1;
 			
-			if(board[0]>0&&board[1]>0&&board[2]>0&&board[3]>0&&board[4]>0&&board[5]>0&&board[6]>0&&board[7]>0) begin
-			if(board[8]>0&&board[9]>0&&board[10]>0&&board[11]>0&&board[12]>0&&board[13]>0&&board[14]>0&&board[15]>0) begin
-			if(board[0]!=board[1]&&board[1]!=board[2]&&board[2]!=board[3]) begin
-			if(board[4]!=board[5]&&board[5]!=board[6]&&board[6]!=board[7]) begin
-			if(board[8]!=board[9]&&board[9]!=board[10]&&board[10]!=board[11]) begin
-			if(board[12]!=board[13]&&board[13]!=board[14]&&board[14]!=board[15]) begin
-			if(board[0]!=board[4]&&board[4]!=board[8]&&board[8]!=board[12]) begin
-			if(board[1]!=board[5]&&board[5]!=board[9]&&board[9]!=board[13]) begin
-			if(board[2]!=board[6]&&board[6]!=board[10]&&board[10]!=board[14]) begin
-			if(board[3]!=board[7]&&board[7]!=board[11]&&board[11]!=board[15]) begin
-				endflag <= 2'd1;
-			end end end end end end end end end end
-			if(board[0]==8'd11||board[1]==8'd11||board[2]==8'd11||board[3]==8'd11) begin
-			if(board[4]==8'd11||board[5]==8'd11||board[9]==8'd11||board[7]==8'd11) begin
-			if(board[8]==8'd11||board[9]==8'd11||board[10]==8'd11||board[11]==8'd11) begin
-			if(board[13]==8'd11||board[13]==8'd11||board[14]==8'd11||board[15]==8'd11) begin
-				endflag <= 2'd2;
-			end end end end 
+			if(board[0]>0&&board[1]>0&&board[2]>0&&board[3]>0&&board[4]>0&&board[5]>0&&board[6]>0&&board[7]>0
+			 &&board[8]>0&&board[9]>0&&board[10]>0&&board[11]>0&&board[12]>0&&board[13]>0&&board[14]>0&&board[15]>0
+			 &&board[0]!=board[1]&&board[1]!=board[2]&&board[2]!=board[3]
+			 &&board[4]!=board[5]&&board[5]!=board[6]&&board[6]!=board[7]
+			 &&board[8]!=board[9]&&board[9]!=board[10]&&board[10]!=board[11]
+			 &&board[12]!=board[13]&&board[13]!=board[14]&&board[14]!=board[15]
+			 &&board[0]!=board[4]&&board[4]!=board[8]&&board[8]!=board[12]
+			 &&board[1]!=board[5]&&board[5]!=board[9]&&board[9]!=board[13]
+			 &&board[2]!=board[6]&&board[6]!=board[10]&&board[10]!=board[14]
+			 &&board[3]!=board[7]&&board[7]!=board[11]&&board[11]!=board[15]) endflag <= 2'd1;
+				
+			if(board[0]==8'd11||board[1]==8'd11||board[2]==8'd11||board[3]==8'd11
+			 ||board[4]==8'd11||board[5]==8'd11||board[9]==8'd11||board[7]==8'd11
+			 ||board[8]==8'd11||board[9]==8'd11||board[10]==8'd11||board[11]==8'd11
+			 ||board[13]==8'd11||board[13]==8'd11||board[14]==8'd11||board[15]==8'd11) endflag <= 2'd2;
 			
 			if(up && down && left && right) begin
 				activeflag <= 1'b0;
@@ -4015,7 +4012,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 					else if(board[13] == 8'd0 && board[9] == 8'd0 && board[5] != 8'd0 && board[1] != 8'd0) begin
 						if(board[5] != board[1]) begin
 							{board[13], board[9], board[5], board[1]} <= {board[5], board[1], 8'd0, 8'd0};
-							{to_right[13], to_right[9], to_right[5], to_right[1]} <= {32'd0, 32'd0, 32'd0, 32'd2};
+							{to_right[13], to_right[9], to_right[5], to_right[1]} <= {32'd0, 32'd0, 32'd2, 32'd2};
 						end
 						else begin
 							{board[13], board[9], board[5], board[1]} <= {board[5]+8'd1, 8'd0, 8'd0, 8'd0};
@@ -4039,7 +4036,7 @@ module display(row, col, red, green, blue, color, up, down, left, right, vnotact
 						end
 						else begin
 							{board[13], board[9], board[5], board[1]} <= {board[13]+8'd1, 8'd0, 8'd0, 8'd0};
-							{to_right[13], to_right[9], to_right[5], to_right[1]} <= {32'd0, 32'd0, 32'd2, 32'd3};
+							{to_right[13], to_right[9], to_right[5], to_right[1]} <= {32'd0, 32'd0, 32'd0, 32'd3};
 						end
 					end
 					else if(board[13] == 8'd0 && board[9] != 8'd0 && board[5] != 8'd0 && board[1] == 8'd0) begin
