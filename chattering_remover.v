@@ -15,8 +15,8 @@ endmodule
 
 module chattering_remover(clk, rst, keyin, keyout);
 	input clk, rst;
-	input [4:0] keyin;
-	output reg [4:0] keyout;
+	input [5:0] keyin;
+	output reg [5:0] keyout;
 	
 	always @(posedge clk_divided) keyout <= keyin;
 	
