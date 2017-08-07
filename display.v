@@ -21,7 +21,7 @@ module display(row, col, red, green, blue, speed, up, down, left, right, missile
 	reg [31:0] to_down [0:15];
 	reg [31:0] moveclocker;
 	reg [31:0] movecounter;
-    reg [63:0] jet_pos;
+	reg [63:0] jet_pos;
 	reg clockflag;
 	reg missileclockflag;
 	reg [31:0] missile_col, missile_row;
@@ -2510,234 +2510,234 @@ module display(row, col, red, green, blue, speed, up, down, left, right, missile
 				if(col-630 > row-530) {red, green, blue} <= 3'b101;
 				else {red, green, blue} <= 3'b011;
 			end
-            else if(row>=10+2*8&&row<10+2*8+8&&col>=315+3*8&&col<315+3*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=315+3*8&&col<315+3*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=315+3*8&&col<315+3*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=315+3*8&&col<315+3*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+6*8&&row<10+6*8+8&&col>=315+3*8&&col<315+3*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=315+3*8&&col<315+3*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=315+4*8&&col<315+4*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+8*8&&row<10+8*8+8&&col>=315+4*8&&col<315+4*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=315+5*8&&col<315+5*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+8*8&&row<10+8*8+8&&col>=315+5*8&&col<315+5*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=315+6*8&&col<315+6*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+8*8&&row<10+8*8+8&&col>=315+6*8&&col<315+6*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+2*8&&row<10+2*8+8&&col>=315+7*8&&col<315+7*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=315+7*8&&col<315+7*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=315+7*8&&col<315+7*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=315+7*8&&col<315+7*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+6*8&&row<10+6*8+8&&col>=315+7*8&&col<315+7*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=315+7*8&&col<315+7*8+8) begin
-                {red, green, blue} <= 3'b110;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=225+2*8&&col<225+2*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=225+2*8&&col<225+2*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=225+3*8&&col<225+3*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+2*8&&row<10+2*8+8&&col>=225+3*8&&col<225+3*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+6*8&&row<10+6*8+8&&col>=225+3*8&&col<225+3*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=225+3*8&&col<225+3*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=225+4*8&&col<225+4*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=225+4*8&&col<225+4*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=225+4*8&&col<225+4*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=225+5*8&&col<225+5*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+2*8&&row<10+2*8+8&&col>=225+5*8&&col<225+5*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=225+5*8&&col<225+5*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=225+5*8&&col<225+5*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=225+6*8&&col<225+6*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=225+6*8&&col<225+6*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=225+6*8&&col<225+6*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=225+7*8&&col<225+7*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=225+8*8&&col<225+8*8+8) begin
-                {red, green, blue} <= 3'b001;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+0*8&&col<405+0*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=405+1*8&&col<405+1*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+1*8&&col<405+1*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=405+2*8&&col<405+2*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=405+2*8&&col<405+2*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+2*8&&col<405+2*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=405+3*8&&col<405+3*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+2*8&&row<10+2*8+8&&col>=405+3*8&&col<405+3*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=405+3*8&&col<405+3*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+3*8&&col<405+3*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+4*8&&col<405+4*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+5*8&&col<405+5*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+2*8&&row<10+2*8+8&&col>=405+6*8&&col<405+6*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=405+6*8&&col<405+6*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=405+6*8&&col<405+6*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+6*8&&col<405+6*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+6*8&&row<10+6*8+8&&col>=405+6*8&&col<405+6*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=405+6*8&&col<405+6*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+8*8&&row<10+8*8+8&&col>=405+6*8&&col<405+6*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+7*8&&col<405+7*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=405+8*8&&col<405+8*8+8) begin
-                {red, green, blue} <= 3'b101;
-            end
-            else if(row>=10+2*8&&row<10+2*8+8&&col>=495+2*8&&col<495+2*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=495+2*8&&col<495+2*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=495+2*8&&col<495+2*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+6*8&&row<10+6*8+8&&col>=495+2*8&&col<495+2*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=495+2*8&&col<495+2*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=495+3*8&&col<495+3*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=495+3*8&&col<495+3*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+8*8&&row<10+8*8+8&&col>=495+3*8&&col<495+3*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=495+4*8&&col<495+4*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=495+4*8&&col<495+4*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+8*8&&row<10+8*8+8&&col>=495+4*8&&col<495+4*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+1*8&&row<10+1*8+8&&col>=495+5*8&&col<495+5*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+4*8&&row<10+4*8+8&&col>=495+5*8&&col<495+5*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+8*8&&row<10+8*8+8&&col>=495+5*8&&col<495+5*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+2*8&&row<10+2*8+8&&col>=495+6*8&&col<495+6*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+3*8&&row<10+3*8+8&&col>=495+6*8&&col<495+6*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+5*8&&row<10+5*8+8&&col>=495+6*8&&col<495+6*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+6*8&&row<10+6*8+8&&col>=495+6*8&&col<495+6*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
-            else if(row>=10+7*8&&row<10+7*8+8&&col>=495+6*8&&col<495+6*8+8) begin
-                {red, green, blue} <= 3'b011;
-            end
+			else if(row>=10+2*8&&row<10+2*8+8&&col>=315+3*8&&col<315+3*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=315+3*8&&col<315+3*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=315+3*8&&col<315+3*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=315+3*8&&col<315+3*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+6*8&&row<10+6*8+8&&col>=315+3*8&&col<315+3*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=315+3*8&&col<315+3*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=315+4*8&&col<315+4*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+8*8&&row<10+8*8+8&&col>=315+4*8&&col<315+4*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=315+5*8&&col<315+5*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+8*8&&row<10+8*8+8&&col>=315+5*8&&col<315+5*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=315+6*8&&col<315+6*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+8*8&&row<10+8*8+8&&col>=315+6*8&&col<315+6*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+2*8&&row<10+2*8+8&&col>=315+7*8&&col<315+7*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=315+7*8&&col<315+7*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=315+7*8&&col<315+7*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=315+7*8&&col<315+7*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+6*8&&row<10+6*8+8&&col>=315+7*8&&col<315+7*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=315+7*8&&col<315+7*8+8) begin
+				{red, green, blue} <= 3'b110;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=225+2*8&&col<225+2*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=225+2*8&&col<225+2*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=225+3*8&&col<225+3*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+2*8&&row<10+2*8+8&&col>=225+3*8&&col<225+3*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+6*8&&row<10+6*8+8&&col>=225+3*8&&col<225+3*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=225+3*8&&col<225+3*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=225+4*8&&col<225+4*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=225+4*8&&col<225+4*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=225+4*8&&col<225+4*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=225+5*8&&col<225+5*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+2*8&&row<10+2*8+8&&col>=225+5*8&&col<225+5*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=225+5*8&&col<225+5*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=225+5*8&&col<225+5*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=225+6*8&&col<225+6*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=225+6*8&&col<225+6*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=225+6*8&&col<225+6*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=225+7*8&&col<225+7*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=225+8*8&&col<225+8*8+8) begin
+				{red, green, blue} <= 3'b001;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+0*8&&col<405+0*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=405+1*8&&col<405+1*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+1*8&&col<405+1*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=405+2*8&&col<405+2*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=405+2*8&&col<405+2*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+2*8&&col<405+2*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=405+3*8&&col<405+3*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+2*8&&row<10+2*8+8&&col>=405+3*8&&col<405+3*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=405+3*8&&col<405+3*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+3*8&&col<405+3*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+4*8&&col<405+4*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+5*8&&col<405+5*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+2*8&&row<10+2*8+8&&col>=405+6*8&&col<405+6*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=405+6*8&&col<405+6*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=405+6*8&&col<405+6*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+6*8&&col<405+6*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+6*8&&row<10+6*8+8&&col>=405+6*8&&col<405+6*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=405+6*8&&col<405+6*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+8*8&&row<10+8*8+8&&col>=405+6*8&&col<405+6*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+7*8&&col<405+7*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=405+8*8&&col<405+8*8+8) begin
+				{red, green, blue} <= 3'b101;
+			end
+			else if(row>=10+2*8&&row<10+2*8+8&&col>=495+2*8&&col<495+2*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=495+2*8&&col<495+2*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=495+2*8&&col<495+2*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+6*8&&row<10+6*8+8&&col>=495+2*8&&col<495+2*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=495+2*8&&col<495+2*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=495+3*8&&col<495+3*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=495+3*8&&col<495+3*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+8*8&&row<10+8*8+8&&col>=495+3*8&&col<495+3*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=495+4*8&&col<495+4*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=495+4*8&&col<495+4*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+8*8&&row<10+8*8+8&&col>=495+4*8&&col<495+4*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+1*8&&row<10+1*8+8&&col>=495+5*8&&col<495+5*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+4*8&&row<10+4*8+8&&col>=495+5*8&&col<495+5*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+8*8&&row<10+8*8+8&&col>=495+5*8&&col<495+5*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+2*8&&row<10+2*8+8&&col>=495+6*8&&col<495+6*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+3*8&&row<10+3*8+8&&col>=495+6*8&&col<495+6*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+5*8&&row<10+5*8+8&&col>=495+6*8&&col<495+6*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+6*8&&row<10+6*8+8&&col>=495+6*8&&col<495+6*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
+			else if(row>=10+7*8&&row<10+7*8+8&&col>=495+6*8&&col<495+6*8+8) begin
+				{red, green, blue} <= 3'b011;
+			end
 			else if(endflag == 2'd1) {red, green, blue} <= 3'b100;
 			else if(endflag == 2'd2) {red, green, blue} <= 3'b010;
 			else {red, green, blue} <= 3'b111;
@@ -2945,7 +2945,7 @@ module display(row, col, red, green, blue, speed, up, down, left, right, missile
 			
 			movecounter <= 32'd0;
 			moveclocker <= 32'd0;
-         jet_pos <= 64'd0;
+		 jet_pos <= 64'd0;
 				
 			missile_row <= 32'd100;
 			missile_col <= 32'd200;
@@ -3109,7 +3109,7 @@ module display(row, col, red, green, blue, speed, up, down, left, right, missile
 			end
 			
 			clockcounter <= clockcounter + 64'd1;
-            
+			
 			if(jet_pos >= 2200) jet_pos <= 64'd0;
 			else if(clockcounter[17] == clockflag) begin
 				if(!speed) jet_pos <= jet_pos + 3;
